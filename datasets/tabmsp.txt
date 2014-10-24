@@ -1,0 +1,129 @@
+Adam MSP, Brian	SNP	North East Scotland
+Aitken MSP, Bill	Con	Glasgow
+Alexander MSP, Ms Wendy	Lab	Paisley North
+Baillie MSP, Jackie	Lab	Dumbarton
+Barrie MSP, Scott	Lab	Dunfermline West
+Boyack MSP, Ms Sarah	Lab	Edinburgh Central
+Brankin MSP, Rhona	Lab	Midlothian
+Brown MSP, Robert	LD	Glasgow
+Campbell MSP, Colin	SNP	West of Scotland
+Canavan MSP, Dennis		Falkirk West
+Chisholm MSP, Malcolm	Lab	Edinburgh North and Leith
+Craigie MSP, Cathie	Lab	Cumbernauld and Kilsyth
+Crawford JP MSP, Bruce	SNP	Mid-Scotland and Fife
+Cunningham MSP, Roseanna	SNP	Perth
+Curran MSP, Ms Margaret	Lab	Glasgow Baillieston
+Davidson MSP, Mr David	Con	North East Scotland
+Deacon MSP, Susan	Lab	Edinburgh East and Musselburgh
+Dewar MSP, Rt Hon Donald	Lab	Glasgow Anniesland
+Douglas-Hamilton QC MSP, Rt Hon Lord James	Con	Lothians
+Eadie MSP, Helen	Lab	Dunfermline East
+Elder MSP, Dorothy-Grace	SNP	Glasgow
+Ewing FRSA MSP, Dr Winnie	SNP	Highlands and Islands
+Ewing MSP, Fergus	SNP	Inverness East, Nairn and Lochaber
+Ewing MSP, Mrs Margaret	SNP	Moray
+Fabiani MSP, Linda	SNP	Central Scotland
+Ferguson MSP, Patricia	Lab	Glasgow Maryhill
+Fergusson MSP, Alex	Con	South of Scotland
+Finnie MSP, Ross	LD	West of Scotland
+Galbraith FRCSGlas MP MSP, Mr Sam	Lab	Strathkelvin and Bearsden
+Gallie MSP, Phil	Con	South of Scotland
+Gibson MSP, Mr Kenneth	SNP	Glasgow
+Gillon MSP, Karen	Lab	Clydesdale
+Godman MSP, Trish	Lab	West Renfrewshire
+Goldie MSP, Miss Annabel	Con	West of Scotland
+Gorrie OBE MSP, Donald	LD	Central Scotland
+Grahame MSP, Christine	SNP	South of Scotland
+Grant MSP, Rhoda	Lab	Highlands and Islands
+Gray MSP, Iain	Lab	Edinburgh Pentlands
+Hamilton MSP, Mr Duncan	SNP	Highlands and Islands
+Harding MSP, Mr Keith	Con	Mid-Scotland and Fife
+Harper MSP, Robin	Green	Lothians
+Henry MSP, Hugh	Lab	Paisley South
+Home Robertson MSP, Mr John	Lab	East Lothian
+Hughes MSP, Janis	Lab	Glasgow Rutherglen
+Hyslop MSP, Fiona	SNP	Lothians
+Ingram MSP, Mr Adam	SNP	South of Scotland
+Jackson MSP, Dr Sylvia	Lab	Stirling
+Jackson QC MSP, Gordon	Lab	Glasgow Govan
+Jamieson MSP, Cathy	Lab	Carrick, Cumnock and Doon Valley
+Jamieson MSP, Margaret	Lab	Kilmarnock and Loudoun
+Jenkins MSP, Ian	LD	Tweeddale, Ettrick and Lauderdale
+Johnston MSP, Mr Nick	Con	Mid-Scotland and Fife
+Johnstone MSP, Alex	Con	North East Scotland
+Kerr MSP, Mr Andy	Lab	East Kilbride
+Lamont MSP, Johann	Lab	Glasgow Pollok
+Livingstone MSP, Marilyn	Lab	Kirkcaldy
+Lochhead MSP, Richard	SNP	North East Scotland
+Lyon MSP, George	LD	Argyll and Bute
+MacAskill MSP, Mr Kenny	SNP	Lothians
+Macdonald MSP, Lewis	Lab	Aberdeen Central
+MacDonald MSP, Ms Margo	SNP	Lothians
+Macintosh MSP, Mr Kenneth	Lab	Eastwood
+MacKay MSP, Angus	Lab	Edinburgh South
+MacLean MSP, Kate	Lab	Dundee West
+Macmillan MSP, Maureen	Lab	Highlands and Islands
+Martin MSP, Paul	Lab	Glasgow Springburn
+Marwick MSP, Tricia	SNP	Mid-Scotland and Fife
+Matheson MSP, Mr Michael	SNP	Central Scotland
+McAllion MSP, Mr John	Lab	Dundee East
+McAveety MSP, Mr Frank	Lab	Glasgow Shettleston
+McCabe MSP, Mr Tom	Lab	Hamilton South
+McConnell MSP, Mr Jack	Lab	Motherwell and Wishaw
+McGrigor MSP, Mr Jamie	Con	Highlands and Islands
+McGugan MSP, Irene	SNP	North East Scotland
+McIntosh MSP, Mrs Lyndsay	Con	Central Scotland
+McLeish MSP, Henry	Lab	Central Fife
+McLeod MSP, Fiona	SNP	West of Scotland
+McLetchie MSP, David	Con	Lothians
+McMahon MSP, Mr Michael	Lab	Hamilton North and Bellshill
+McNeil MSP, Duncan	Lab	Greenock and Inverclyde
+McNeill MSP, Pauline	Lab	Glasgow Kelvin
+McNulty MSP, Des	Lab	Clydebank and Milngavie
+Monteith MSP, Mr Brian	Con	Mid-Scotland and Fife
+Morgan MSP, Alasdair	SNP	Galloway and Upper Nithsdale
+Morrison MSP, Mr Alasdair	Lab	Western Isles
+Muldoon MSP, Bristow	Lab	Livingston
+Mulligan MSP, Mrs Mary	Lab	Linlithgow
+Mundell MSP, David	Con	South of Scotland
+Munro MSP, Mr John	LD	Ross, Skye and Inverness West
+Murray MSP, Dr Elaine	Lab	Dumfries
+Neil MSP, Alex	SNP	Central Scotland region
+Oldfather MSP, Ms Irene	Lab	Cunninghame South
+Paterson MSP, Mr Gil	SNP	Central Scotland
+Peacock MSP, Peter	Lab	Highlands and Islands
+Peattie MSP, Cathy	Lab	Falkirk East
+Quinan MSP, Mr Lloyd	SNP	West of Scotland
+Radcliffe MSP, Nora	LD	Gordon
+Raffan MSP, Mr Keith	LD	Mid-Scotland and Fife
+Reid MSP, Mr George	SNP	Mid-Scotland and Fife
+Robison MSP, Shona	SNP	North East Scotland
+Robson MSP, Euan	LD	Roxburgh and Berwickshire
+Rumbles MSP, Mr Mike	LD	West Aberdeenshire and Kincardine
+Russell MSP, Michael	SNP	South of Scotland
+Salmond MSP, Mr Alex	SNP	Banff and Buchan
+Scanlon MSP, Mary	Con	Highlands and Islands
+Scott MSP, John	Con	Ayr
+Scott MSP, Tavish	LD	Shetland
+Sheridan MSP, Tommy	SSP	Glasgow
+Simpson MSP, Dr Richard	Lab	Ochil
+Smith MSP, Elaine	Lab	Coatbridge and Chryston
+Smith MSP, Iain	LD	North East Fife
+Smith MSP, Mrs Margaret	LD	Edinburgh West
+Steel KBE MSP, Rt Hon Sir David	LD	Lothians
+Stephen MSP, Nicol	LD	Aberdeen South
+Stone MSP, Mr Jamie	LD	Caithness, Sutherland and Easter Ross
+Sturgeon MSP, Ms Nicola	SNP	Glasgow
+Swinney MSP, Mr John	SNP	North Tayside
+Thomson MSP, Elaine	Lab	Aberdeen North
+Tosh MSP, Mr Murray	Con	South of Scotland
+Ullrich MSP, Mrs Kay	SNP	West of Scotland
+Wallace MSP, Ben	Con	North East Scotland
+Wallace QC MSP, Mr Jim	LD	Orkney
+Watson MSP, Mike	Lab	Glasgow Cathcart
+Welsh MSP, Mr Andrew	SNP	Angus
+White MSP, Ms Sandra	SNP	Glasgow
+Whitefield MSP, Karen	Lab	Airdrie and Shotts
+Wilson MSP, Allan	Lab	Cunninghame North
+Wilson MSP, Andrew	SNP	Central Scotland
+Young OBE MSP, John	Con	West of Scotland

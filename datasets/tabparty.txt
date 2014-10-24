@@ -1,0 +1,9 @@
+Com	Communist	
+Con	Conservative	McLetchie MSP, David
+Green	Green	
+Lab	Labour	Dewar MSP, Rt Hon Donald
+LD	Liberal Democrat	Wallace QC MSP, Mr Jim
+NLP	Natural Law Party	
+SNP	Scottish National Party	Salmond MSP, Mr Alex
+SSP	Scottish Socialist Party	
+SWP	Socialist Workers Party	
