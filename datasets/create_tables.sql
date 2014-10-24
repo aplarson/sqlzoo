@@ -1,4 +1,10 @@
+DROP TABLE actor;
 DROP TABLE bbc; 
+DROP TABLE casting;
+DROP TABLE movie;
+DROP TABLE nobel;
+DROP TABLE route;
+DROP TABLE stops;
 
 CREATE TABLE bbc(
    name VARCHAR(50) NOT NULL,
@@ -9,17 +15,11 @@ CREATE TABLE bbc(
    PRIMARY KEY (name)
 );
 
-DROP TABLE nobel;
-
 CREATE TABLE nobel(
   yr INT,
   subject VARCHAR(15),
   winner VARCHAR(50)
 );
-
-DROP TABLE casting;
-DROP TABLE movie;
-DROP TABLE actor;
 
 CREATE TABLE actor(
   id INTEGER NOT NULL,
@@ -55,9 +55,6 @@ CREATE INDEX casting_movie ON casting(movieid);
 CREATE INDEX casting_actor ON casting(actorid);
 CREATE INDEX casting_ord   ON casting(ord);
 
-DROP TABLE route;
-DROP TABLE stops;
-
 CREATE TABLE stops (
   id INTEGER NOT NULL,
   name VARCHAR(30),
@@ -72,3 +69,12 @@ CREATE TABLE route (
   FOREIGN KEY(stop) REFERENCES stops(id),
   PRIMARY KEY(num,company,pos)
 );
+
+.mode tabs
+.import 'tabactor.txt' actor
+.import 'tabbbc.txt' bbc
+.import 'tabcasting.txt' casting
+.import 'tabmovie.txt' movie
+.import 'tabnobel.txt' nobel
+.import 'tabroute.txt' route
+.import 'tabstops.txt' stops
