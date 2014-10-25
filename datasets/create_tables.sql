@@ -1,12 +1,12 @@
 DROP TABLE actor;
-DROP TABLE bbc; 
+DROP TABLE world; 
 DROP TABLE casting;
 DROP TABLE movie;
 DROP TABLE nobel;
 DROP TABLE route;
 DROP TABLE stops;
 
-CREATE TABLE bbc(
+CREATE TABLE world(
    name VARCHAR(50) NOT NULL,
    region VARCHAR(60),
    area DECIMAL(10),
@@ -72,7 +72,7 @@ CREATE TABLE route (
 
 .mode tabs
 .import 'tabactor.txt' actor
-.import 'tabbbc.txt' bbc
+.import 'tabworld.txt' world
 .import 'tabcasting.txt' casting
 .import 'tabmovie.txt' movie
 .import 'tabnobel.txt' nobel
