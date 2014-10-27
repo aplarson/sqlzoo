@@ -2,12 +2,6 @@ require 'rspec'
 require '02_select_world'
 
 describe 'SELECT from world' do
-  describe 'method' do
-    it 'behavior' do
-      expect(method).to contain_exactly(results)
-    end
-  end
-
   describe 'large_countries' do
     it 'selects the names of countries with a population of over 200 million' do
       expect(large_countries).to contain_exactly(

@@ -48,7 +48,7 @@ describe 'SELECT basics' do
 
   describe 'scandinavia' do
     it 'shows the names and populations of Scandinavian countries' do
-      expect (scandinavia).to contain_exactly(
+      expect(scandinavia).to contain_exactly(
         ["Denmark", 5400000.0],
         ["Finland", 5200000.0],
         ["Norway", 4600000.0],
@@ -59,7 +59,7 @@ describe 'SELECT basics' do
 
   describe 'starts_with_g' do
     it 'selects countries whose names start with G' do
-      expect (starts_with_g).to contain_exactly(
+      expect(starts_with_g).to contain_exactly(
         ["Gabon"],
         ["Georgia"],
         ["Germany"],
