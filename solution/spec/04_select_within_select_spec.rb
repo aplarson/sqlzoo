@@ -11,8 +11,7 @@ describe "SELECT within SELECT" do
         ["India"],
         ["Indonesia"],
         ["Pakistan"],
-        ["United States of America"],
-        ["Vatican"]
+        ["United States of America"]
       )
     end
   end
@@ -118,8 +117,10 @@ describe "SELECT within SELECT" do
   end 
 
   describe "highest_gdp" do
-    it "passes automatically until it gets fixed" do
+    it "selects countries with higher GDPs than all European countries" do
       expect(highest_gdp).to contain_exactly(
+        ["Japan"],
+        ["United States of America"]
       )
     end
   end
@@ -171,8 +172,7 @@ describe "SELECT within SELECT" do
       expect(large_neighbors).to contain_exactly(
         ["Brazil", "South America"],
         ["China", "Asia-Pacific"],
-        ["India", "South Asia"],
-        ["Vatican", "Europe"]
+        ["India", "South Asia"]
       )
     end
   end

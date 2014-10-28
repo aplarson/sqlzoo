@@ -62,7 +62,7 @@ describe "Aggregate queries" do
         ["Africa", 21],
         ["Americas", 2],
         ["Asia-Pacific", 15],
-        ["Europe", 17],
+        ["Europe", 16],
         ["Middle East", 9],
         ["North America", 3],
         ["South America", 7],

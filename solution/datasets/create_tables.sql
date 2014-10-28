@@ -78,3 +78,6 @@ CREATE TABLE route (
 .import 'tabnobel.txt' nobel
 .import 'tabroute.txt' route
 .import 'tabstops.txt' stops
+
+UPDATE world SET population = NULL WHERE population=''; 
+UPDATE world SET gdp = NULL WHERE gdp=''; 

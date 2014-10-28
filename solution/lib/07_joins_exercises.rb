@@ -83,7 +83,7 @@ def travoltas_busiest_years
     GROUP BY
       movie.yr
     HAVING
-      COUNT(*) > 2;
+      COUNT(*) >= 2;
   SQL
 end
 

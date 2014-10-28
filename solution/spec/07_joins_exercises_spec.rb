@@ -62,6 +62,8 @@ describe "JOIN exercises" do
   describe "travoltas_busiest_years" do
     it "selects the year and number of movies of John Travolta's busy years" do
       expect(travoltas_busiest_years).to contain_exactly(
+        [1996.0, 2],
+        [1998.0, 2] 
       )
     end
   end

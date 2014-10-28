@@ -20,7 +20,7 @@ def large_countries
     FROM
       world
     WHERE
-      world.population > 200000000;
+      world.population IS NOT NULL AND world.population > 200000000;
   SQL
 end
 

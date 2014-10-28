@@ -44,7 +44,7 @@ def small_and_wealthy
     FROM
       world
     WHERE
-      (world.area < 2000 AND world.gdp > 5000000000);
+      world.area < 2000 AND world.gdp > 5000000000;
   SQL
 end
 
