@@ -22,7 +22,7 @@ describe "JOIN warmup" do
 
   describe "trek_films" do
     it "selects all Star Trek films and orders them by year" do
-      expect(trek_films).to eq(
+      expect(trek_films).to eq([
         [402, "Star Trek: The Motion Picture", 1979.0],
         [209, "Star Trek: The Wrath of Khan", 1982.0],
         [438, "Star Trek III: The Search for Spock", 1984.0],
@@ -32,7 +32,7 @@ describe "JOIN warmup" do
         [280, "Star Trek: Generations", 1994.0],
         [68, "Star Trek: First Contact", 1996.0],
         [252, "Star Trek: Insurrection", 1998.0]
-      )
+      ])
     end
   end
 
@@ -73,7 +73,7 @@ describe "JOIN warmup" do
 
   describe "alien_cast" do
     it "selects the cast of the film Alien" do
-      expect(alien-cast).to contain_exactly(
+      expect(alien_cast).to contain_exactly(
         ["Sigourney Weaver"],
         ["Ian Holm"],
         ["Harry Dean Stanton"],

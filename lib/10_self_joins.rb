@@ -32,7 +32,8 @@ def lrt_stops
     JOIN
       stops ON route.stop = stops.id
     WHERE
-      (route.company, route.num) = ('LRT', 4);
+      route.company = 'LRT'
+      AND route.num = 4;
   SQL
 end  
 
@@ -118,7 +119,7 @@ def haymarket_and_leith
           stops s2 ON r2.stop = s2.id
         WHERE
           s2.name = 'Leith'
-      ) AS r2 ON (r1.company, r1.num) = (r2.company, r2.num);
+      ) AS r2 ON (r1.company = r2.company AND r1.num = r2.num)
   SQL
 end
 
@@ -146,7 +147,7 @@ def craiglockhart_and_tollcross
         JOIN
           stops s2 ON r2.stop = s2.id
         WHERE s2.name = 'Tollcross'
-      ) AS r2 ON (r1.company, r1.num) = (r2.company, r2.num);
+      ) AS r2 ON (r1.company = r2.company AND r1.num = r2.num);
   SQL
 end
 
@@ -176,8 +177,8 @@ def start_at_craiglockhart
       ) AS start_routes
     JOIN
       route AS end_routes ON
-        (start_routes.num, start_routes.company)
-          = (end_routes.num, end_routes.company)
+        (start_routes.num = end_routes.num
+        AND start_routes.company = end_routes.company)
     JOIN
       stops AS end_route_stops ON end_routes.stop = end_route_stops.id
   SQL
