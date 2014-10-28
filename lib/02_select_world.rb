@@ -47,7 +47,7 @@ def population_in_millions
     FROM
       world
     WHERE
-      region = 'South America';
+      continent = 'South America';
   SQL
 end
 

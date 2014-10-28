@@ -36,11 +36,11 @@ def per_capita_gdp
 end
 
 def small_and_wealthy
-  # Show the name and region of countries where the area is less than 2,000
+  # Show the name and continent of countries where the area is less than 2,000
   # and the gdp is more than 5,000,000,000.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name, world.region
+      world.name, world.continent
     FROM
       world
     WHERE

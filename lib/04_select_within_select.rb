@@ -21,7 +21,19 @@ end
 def larger_than_russia
   # List each country name where the population is larger than 'Russia'.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      w1.name
+    FROM
+      world w1
+    WHERE
+      w1.population > (
+        SELECT
+          w2.population
+        FROM
+          world w2
+        WHERE
+          w2.name = 'Russia'
+      );
   SQL
 end
 
@@ -29,7 +41,20 @@ def richer_than_england
   # Show the countries in Europe with a per capita GDP greater than
   # 'United Kingdom'.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      world.name
+    FROM
+      world
+    WHERE
+      (world.continent = 'Europe'
+        AND (world.gdp / world.population) > (
+          SELECT
+            w2.gdp / w2.population
+          FROM
+            world w2
+          WHERE
+            w2.name = 'United Kingdom'
+        ));
   SQL
 end
 
@@ -37,7 +62,19 @@ def neighbors_of_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      world.name, world.continent
+    FROM
+      world
+    WHERE
+      world.continent IN (
+        SELECT
+          w2.continent
+        FROM
+          world w2
+        WHERE
+          w2.name IN ('Belize', 'Belgium')
+      );
   SQL
 end
 
@@ -45,7 +82,26 @@ def population_constraint
   # Which country has a population that is more than Canada but less than
   # Poland? Show the name and the population.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      world.name, world.population
+    FROM
+      world
+    WHERE
+      (world.population > (
+          SELECT
+            w2.population
+          FROM
+            world w2
+          WHERE
+            w2.name = 'Canada'
+        ) AND world.population < (
+          SELECT
+            w2.population
+          FROM
+            world w2
+          WHERE
+            w2.name = 'Poland'
+        ));
   SQL
 end
 
@@ -61,7 +117,19 @@ def highest_gdp
   # Which countries have a GDP greater than every country in Europe? (Give the
   # name only. Some countries may have NULL gdp values)
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      world.name
+    FROM
+      world
+    WHERE
+      world.gdp IS NOT NULL AND world.gdp > (
+        SELECT
+          MAX(w2.gdp)
+        FROM
+          world w2
+        WHERE
+          w2.continent = 'Europe'
+      );
   SQL
 end
 
@@ -73,7 +141,19 @@ def largest_in_continent
   # Find the largest country (by area) in each continent. Show the continent,
   # name, and area.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      w1.continent, w1.name, w1.area
+    FROM
+      world w1
+    WHERE
+      w1.area = (
+        SELECT
+          MAX(w2.area)
+        FROM
+           world w2
+        WHERE
+          w1.continent = w2.continent
+      );
   SQL
 end
 
@@ -84,7 +164,19 @@ def sparse_continents
   # Find each country that belongs to a continent where all populations are
   # less than 25,000,000. Show name, continent and population.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      w1.name, w1.continent, w1.population
+    FROM
+      world w1
+    WHERE
+      w1.continent NOT IN (
+        SELECT
+          w2.continent
+        FROM
+          world w2
+        WHERE
+          w2.population >= 25000000
+      );
   SQL
 end
 
@@ -92,6 +184,20 @@ def large_neighbors
   # Some countries have populations more than three times that of any of their
   # neighbors (in the same continent). Give the countries and continents.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      w1.name, w1.continent
+    FROM
+      world w1
+    WHERE
+      ((w1.population IS NOT NULL) AND (
+          SELECT
+            COUNT(*)
+          FROM
+            world w2
+          WHERE
+            ((w1.continent = w2.continent)
+              AND (w1.name != w2.name) -- got me!
+              AND (3 * w2.population >= w1.population))
+        ) = 0);
   SQL
 end

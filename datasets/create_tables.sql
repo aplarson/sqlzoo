@@ -8,7 +8,7 @@ DROP TABLE stops;
 
 CREATE TABLE world(
    name VARCHAR(50) NOT NULL,
-   region VARCHAR(60),
+   continent VARCHAR(60),
    area DECIMAL(10),
    population DECIMAL(11),
    gdp DECIMAL(14),

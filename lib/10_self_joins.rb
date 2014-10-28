@@ -3,21 +3,36 @@ require_relative './sqlzoo.rb'
 def num_stops
   # How many stops are in the database?
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      COUNT(DISTINCT(route.stop))
+    FROM
+      route;
   SQL
 end
 
 def craiglockhart_id
   # Find the id value for the stop 'Craiglockhart'.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      stops.id
+    FROM
+      stops
+    WHERE
+      stops.name = 'Craiglockhart';
   SQL
 end
 
 def lrt_stops
   # Give the id and the name for the stops on the '4' 'LRT' service.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      route.stop, stops.name
+    FROM
+      route
+    JOIN
+      stops ON route.stop = stops.id
+    WHERE
+      (route.company, route.num) = ('LRT', 4);
   SQL
 end  
 
@@ -82,7 +97,28 @@ def haymarket_and_leith
   # Give a list of all the services which connect stops 115 and 137
   # ('Haymarket' and 'Leith')
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      DISTINCT r1.company, r1.num
+    FROM (
+        SELECT
+          r1.company, r1.num
+        FROM
+          route r1
+        JOIN
+          stops s1 ON r1.stop = s1.id
+        WHERE
+          s1.name = 'Haymarket'
+      ) AS r1
+    JOIN (
+        SELECT
+          r2.company, r2.num, s2.name
+        FROM
+          route r2
+        JOIN
+          stops s2 ON r2.stop = s2.id
+        WHERE
+          s2.name = 'Leith'
+      ) AS r2 ON (r1.company, r1.num) = (r2.company, r2.num);
   SQL
 end
 
@@ -90,7 +126,27 @@ def craiglockhart_and_tollcross
   # Give a list of the services which connect the stops 'Craiglockhart' and
   # 'Tollcross'
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      r1.company, r1.num
+    FROM (
+        SELECT
+          r1.company, r1.num
+        FROM
+          route r1
+        JOIN
+          stops s1 ON r1.stop = s1.id
+        WHERE
+          s1.name = 'Craiglockhart'
+      ) AS r1
+    JOIN (
+        SELECT
+          r2.company, r2.num, s2.name
+        FROM
+          route r2
+        JOIN
+          stops s2 ON r2.stop = s2.id
+        WHERE s2.name = 'Tollcross'
+      ) AS r2 ON (r1.company, r1.num) = (r2.company, r2.num);
   SQL
 end
 
@@ -99,7 +155,31 @@ def start_at_craiglockhart
   # by taking one bus, including 'Craiglockhart' itself. Include the company
   # and bus no. of the relevant services.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT
+      end_route_stops.name,
+      end_routes.company,
+      end_routes.num
+    FROM (
+        SELECT
+          *
+        FROM
+          route start_routes
+        WHERE
+          start_routes.stop = (
+            SELECT
+              stops.id
+            FROM
+              stops
+            WHERE
+              stops.name = 'Craiglockhart'
+          )
+      ) AS start_routes
+    JOIN
+      route AS end_routes ON
+        (start_routes.num, start_routes.company)
+          = (end_routes.num, end_routes.company)
+    JOIN
+      stops AS end_route_stops ON end_routes.stop = end_route_stops.id
   SQL
 end
 
@@ -108,6 +188,37 @@ def craiglockhart_to_sighthill
   # Sighthill. Show the bus no. and company for the first bus, the name of the
   # stop for the transfer, and the bus no. and company for the second bus.
   SqlZooDatabase.instance.execute(<<-SQL)
-    -- your query here
+    SELECT DISTINCT
+      start.num, start.company, transfer.name, end.num, end.company
+    FROM
+      route start
+    JOIN
+      route AS to_transfer ON
+        (start.company = to_transfer.company AND start.num = to_transfer.num)
+    JOIN
+      stops AS transfer ON
+        (to_transfer.stop = transfer.id)
+    JOIN
+      route AS from_transfer ON
+        (transfer.id = from_transfer.stop)
+    JOIN
+      route AS end ON
+        (from_transfer.company = end.company AND from_transfer.num = end.num)
+    WHERE
+      start.stop = (
+        SELECT
+          id
+        FROM
+          stops
+        WHERE
+          name = 'Craiglockhart'
+      ) AND end.stop = (
+        SELECT
+          id
+        FROM
+          stops
+        WHERE
+          name = 'Sighthill'
+      )
   SQL
 end
