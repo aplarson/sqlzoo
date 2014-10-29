@@ -50,7 +50,7 @@ def ford_supporting_films
 end
 
 def films_and_stars_from_sixty_two 
-  # List the films together with the leading star for all 1962 films.
+  # List the title and leading star of every 1962 film.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
       movie.title, actor.name
@@ -66,9 +66,8 @@ def films_and_stars_from_sixty_two
 end
 
 def travoltas_busiest_years
-  # Which were the busiest years for 'John Travolta', show the year and the
-  # number of movies he made each year for any year in which he made more than
-  # 2 movies.
+  # Which were the busiest years for 'John Travolta'? Show the year and the
+  # number of movies he made for any year in which he made at least 2 movies.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
       movie.yr, COUNT(*)

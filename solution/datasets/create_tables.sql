@@ -1,10 +1,12 @@
 DROP TABLE actor;
-DROP TABLE world; 
 DROP TABLE casting;
+DROP TABLE dept;
 DROP TABLE movie;
 DROP TABLE nobel;
 DROP TABLE route;
 DROP TABLE stops;
+DROP TABLE teacher;
+DROP TABLE world; 
 
 CREATE TABLE world(
    name VARCHAR(50) NOT NULL,
@@ -70,6 +72,24 @@ CREATE TABLE route (
   PRIMARY KEY(num,company,pos)
 );
 
+CREATE TABLE teacher (
+  id INTEGER NOT NULL,
+  dept INTEGER,
+  name VARCHAR(255),
+  phone INTEGER,
+  mobile VARCHAR(255),
+  PRIMARY KEY(id),
+  FOREIGN KEY(dept) REFERENCES dept(id)
+);
+
+CREATE INDEX teacher_dept ON teacher(dept);
+
+CREATE TABLE dept (
+  id INTEGER NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id)
+);
+
 .mode tabs
 .import 'tabactor.txt' actor
 .import 'tabworld.txt' world
@@ -78,6 +98,10 @@ CREATE TABLE route (
 .import 'tabnobel.txt' nobel
 .import 'tabroute.txt' route
 .import 'tabstops.txt' stops
+.import 'tabteacher.txt' teacher
+.import 'tabdept.txt' dept
 
 UPDATE world SET population = NULL WHERE population=''; 
 UPDATE world SET gdp = NULL WHERE gdp=''; 
+UPDATE teacher SET dept = NULL WHERE dept='';
+UPDATE teacher SET mobile = NULL where mobile='';
