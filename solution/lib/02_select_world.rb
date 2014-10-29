@@ -5,7 +5,7 @@ def example_select
     SELECT
       population
     FROM
-      bbc
+      world 
     WHERE
       name = 'France'
   SQL
@@ -16,11 +16,11 @@ def large_countries
   # 200 million. 200 million is 200,000,000 (eight zeros).
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name
+      name
     FROM
       world
     WHERE
-      world.population IS NOT NULL AND world.population > 200000000;
+      population > 200000000;
   SQL
 end
 
@@ -55,11 +55,11 @@ def name_and_population
   # Show the name and population for 'France', 'Germany', and 'Italy'
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name, world.population
+      name, population
     FROM
       world
     WHERE
-      world.name IN ('France', 'Germany', 'Italy');
+      name IN ('France', 'Germany', 'Italy');
   SQL
 end
 
@@ -67,10 +67,10 @@ def united_we_stand
   # Show the countries that have a name that includes the word 'United'
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name
+      name
     FROM
       world
     WHERE
-      world.name LIKE '%United%';
+      name LIKE '%United%';
   SQL
 end

@@ -77,4 +77,68 @@ describe "JOIN exercises" do
       )
     end
   end
+
+  describe "prolific_actors" do
+    it "selects and orders the actors who have had more than 30 roles" do
+      expect(prolific_actors).to eq([
+        ["Al Pacino"],
+        ["Arnold Schwarzenegger"],
+        ["Clint Eastwood"],
+        ["Harrison Ford"],
+        ["Robert De Niro"],
+        ["Robin Williams"],
+        ["Sean Connery"],
+        ["Sylvester Stallone"],
+        ["Tom Hanks"]
+      ])
+    end
+  end
+
+  describe "films_by_cast_size" do
+    it "selects 1978 films and orders by cast size" do
+      expect(films_by_cast_size).to eq([
+        ["Death on the Nile", 12],
+        ["Heaven Can Wait", 11],
+        ["Capricorn One", 11],
+        ["Foul Play", 11],
+        ["Animal House", 9],
+        ["Superman", 9],
+        ["Midnight Express", 9],
+        ["Watership Down", 9],
+        ["Boys from Brazil, The", 9],
+        ["Grease", 8],
+        ["Deer Hunter, The", 8],
+        ["Halloween", 8],
+        ["Coma", 7],
+        ["Attack of the Killer Tomatoes!", 7],
+        ["Damien: Omen II", 7],
+        ["Up in Smoke", 6],
+        ["Days of Heaven", 6],
+        ["Dawn of the Dead", 5]
+      ])
+    end
+  end
+
+  describe "colleagues_of_garfunkel" do
+    it "selects actors who have worked with Art Garfunkel" do
+      expect(colleagues_of_garfunkel).to contain_exactly(
+        ["Jon Voight"],
+        ["Orson Welles"],
+        ["Martin Sheen"],
+        ["Richard Benjamin"],
+        ["Martin Balsam"],
+        ["Alan Arkin"],
+        ["Bob Balaban"],
+        ["Anthony Perkins"],
+        ["Jack Gilford"],
+        ["Buck Henry"],
+        ["Norman Fell"],
+        ["Bob Newhart"],
+        ["Bill Paxton"],
+        ["Kurtwood Smith"],
+        ["Julian Sands"],
+        ["Sherilyn Fenn"]
+      )
+    end
+  end
 end

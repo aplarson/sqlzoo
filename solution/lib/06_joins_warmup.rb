@@ -15,11 +15,11 @@ def films_from_sixty_two
   # List the films where the yr is 1962 [Show id, title]
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      movie.id, movie.title
+      id, title
     FROM
       movie
     WHERE
-      movie.yr = 1962;
+      yr = 1962;
   SQL
 end
 
@@ -27,11 +27,11 @@ def year_of_kane
   # Give year of 'Citizen Kane'.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      movie.yr
+      yr
     FROM
       movie
     WHERE
-      movie.title = 'Citizen Kane';
+      title = 'Citizen Kane';
   SQL
 end
 
@@ -41,49 +41,49 @@ def trek_films
   # year.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      movie.id, movie.title, movie.yr
+      id, title, yr
     FROM
       movie
     WHERE
-      movie.title LIKE '%Star Trek%'
+      title LIKE '%Star Trek%'
     ORDER BY
-      movie.yr;
+      yr;
   SQL
 end
 
 def films_by_id
-  # What are the titles of the films with id 11768, 11955, 21191
+  # What are the titles of the films with id 1119, 1595, 1768?
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      movie.title
+      title
     FROM
       movie
     WHERE
-      movie.id IN (1768, 1595, 1191);
+      id IN (1119, 1595, 1768);
   SQL
 end
 
 def glenn_close_id
-  # What id number does the actor 'Glenn Close' have?
+  # What id number does the actress 'Glenn Close' have?
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      actor.id
+      id
     FROM
       actor
     WHERE
-      actor.name = 'Glenn Close';
+      name = 'Glenn Close';
   SQL
 end
 
 def casablanca_id
-  # What is the id of the film 'Casablanca'
+  # What is the id of the film 'Casablanca'?
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      movie.id
+      id
     FROM
       movie
     WHERE
-      movie.title = 'Casablanca';
+      title = 'Casablanca';
   SQL
 end
 

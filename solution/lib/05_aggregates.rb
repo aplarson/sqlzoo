@@ -13,7 +13,7 @@ def continents
   # List all the continents - just once each.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      DISTINCT(world.continent)
+      DISTINCT(continent)
     FROM
       world;
   SQL
@@ -23,11 +23,11 @@ def africa_gdp
   # Give the total GDP of Africa.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      SUM(world.gdp)
+      SUM(gdp)
     FROM
       world
     WHERE
-      world.continent = 'Africa';
+      continent = 'Africa';
   SQL
 end
 
@@ -39,7 +39,7 @@ def area_count
     FROM
       world
     WHERE
-      world.area > 1000000;
+      area > 1000000;
   SQL
 end
 
@@ -47,11 +47,11 @@ def group_population
   # What is the total population of ('France','Germany','Spain')?
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      SUM(world.population)
+      SUM(population)
     FROM
       world
     WHERE
-      world.name IN ('France', 'Germany', 'Spain');
+      name IN ('France', 'Germany', 'Spain');
   SQL
 end
 
@@ -59,11 +59,11 @@ def country_counts
   # For each continent show the continent and number of countries.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.continent, COUNT(*)
+      continent, COUNT(*)
     FROM
       world
     GROUP BY
-      world.continent;
+      continent;
   SQL
 end
 
@@ -72,13 +72,13 @@ def populous_country_counts
   # populations of at least 10 million.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.continent, COUNT(*)
+      continent, COUNT(*)
     FROM
       world
     WHERE
-      world.population > 10000000
+      population > 10000000
     GROUP BY
-      world.continent;
+      continent;
   SQL
 end
 
@@ -86,12 +86,12 @@ def populous_continents
   # List the continents that have a total population of at least 100 million.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.continent
+      continent
     FROM
       world
     GROUP BY
-      world.continent
+      continent
     HAVING
-      SUM(world.population) > 100000000;
+      SUM(population) > 100000000;
   SQL
 end

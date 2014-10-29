@@ -14,11 +14,11 @@ end
 def select_population_of_germany
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.population
+      population
     FROM
       world
     WHERE
-      world.name = 'Germany';
+      name = 'Germany';
   SQL
 end
 
@@ -27,11 +27,11 @@ def per_capita_gdp
   # the area is over 5,000,000 km^2
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name, world.gdp/world.population AS gdp
+      name, gdp/population AS gdp
     FROM
       world
     WHERE
-      world.area > 5000000;
+      area > 5000000;
   SQL
 end
 
@@ -40,11 +40,11 @@ def small_and_wealthy
   # and the gdp is more than 5,000,000,000.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name, world.continent
+      name, continent
     FROM
       world
     WHERE
-      world.area < 2000 AND world.gdp > 5000000000;
+      area < 2000 AND gdp > 5000000000;
   SQL
 end
 
@@ -53,11 +53,11 @@ def scandinavia
   # 'Sweden'
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name, world.population
+      name, population
     FROM
       world
     WHERE
-      world.name IN ('Denmark', 'Finland', 'Norway', 'Sweden');
+      name IN ('Denmark', 'Finland', 'Norway', 'Sweden');
   SQL
 end
 
@@ -65,11 +65,11 @@ def starts_with_g
   # Show each country that begins with the letter G
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name
+      name
     FROM
       world
     WHERE
-      world.name LIKE 'G%';
+      name LIKE 'G%';
   SQL
 end
 
@@ -78,10 +78,10 @@ def just_the_right_size
   # and 250,000. BETWEEN allows range checking - note that it is inclusive.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
-      world.name, world.area/1000
+      name, area/1000
     FROM
       world
     WHERE
-      world.area BETWEEN 200000 AND 250000;
+      area BETWEEN 200000 AND 250000;
   SQL
 end

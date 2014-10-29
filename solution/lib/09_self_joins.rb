@@ -42,7 +42,6 @@ def connecting_routes
   # (149) or Craiglockhart (53). Run the query and notice the two services
   # that link these stops have a count of 2. Add a HAVING clause to restrict
   # the output to these two routes.
-  
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
       company, num, COUNT(*)
@@ -91,7 +90,7 @@ def cl_to_lr_by_name
       stops stopb ON (b.stop=stopb.id)
     WHERE
       stopa.name='Craiglockhart'
-    SQL
+  SQL
 end
 
 def haymarket_and_leith

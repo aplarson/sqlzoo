@@ -10,8 +10,7 @@ describe 'SELECT basics' do
   end
 
   describe 'per_capita_gdp' do
-    it 'selects the per capita GDP of countries with an area over 5 million ' +
-      'km^2' do
+    it 'selects the per capita GDP of large countries' do
       expect(per_capita_gdp).to contain_exactly(
         ["Australia", 26900],
         ["Brazil", 3090],
@@ -26,22 +25,8 @@ describe 'SELECT basics' do
   describe 'small_and_wealthy' do
     it 'selects countries with an area under 2,000 and a GDP over 5 million' do
       expect(small_and_wealthy).to contain_exactly(
-        ["Andorra", "Europe"],
         ["Bahrain", "Middle East"],
-        ["Comoros", "Africa"],
-        ["Grenada", "Americas"],
-        ["Liechtenstein", "Europe"],
-        ["Micronesia", "Asia-Pacific"],
-        ["Monaco", "Europe"],
-        ["Nauru", "Asia-Pacific"],
-        ["Palau", "Asia-Pacific"],
-        ["San Marino", "Europe"],
-        ["Seychelles", "Africa"],
-        ["Singapore", "Asia-Pacific"],
-        ["St Kitts and Nevis", "Americas"],
-        ["Tonga", "Asia-Pacific"],
-        ["Tuvalu", "Asia-Pacific"],
-        ["Vatican", "Europe"]
+        ["Singapore", "Asia-Pacific"]
       )
     end
   end

@@ -3,13 +3,12 @@ require '02_select_world'
 
 describe 'SELECT from world' do
   describe 'large_countries' do
-    it 'selects the names of countries with a population of over 200 million' do
+    it 'selects the names of countries with over 200 million people' do
       expect(large_countries).to contain_exactly(
         ["China"],
         ["India"],
         ["Indonesia"],
-        ["United States of America"],
-        ["Vatican"]
+        ["United States of America"]
       )
     end
   end
@@ -20,8 +19,7 @@ describe 'SELECT from world' do
         ["China", 1290],
         ["India", 620],
         ["Indonesia", 1140],
-        ["United States of America", 41400],
-        ["Vatican", nil]
+        ["United States of America", 41400]
       )
     end
   end

@@ -122,7 +122,7 @@ def highest_gdp
     FROM
       world
     WHERE
-      world.gdp IS NOT NULL AND world.gdp > (
+      world.gdp > (
         SELECT
           MAX(w2.gdp)
         FROM

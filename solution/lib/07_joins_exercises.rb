@@ -16,7 +16,7 @@ def example_join
 end
 
 def ford_films
-  # List the films in which 'Harrison Ford' has appeared
+  # List the films in which 'Harrison Ford' has appeared.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
       movie.title
@@ -120,7 +120,7 @@ def andrews_films_and_leads
 end
 
 def prolific_actors
-  # Obtain a list in alphabetical order of actors who've had at least 30
+  # Obtain a list in alphabetical order of actors who've had at least 15 
   # starring roles.
   SqlZooDatabase.instance.execute(<<-SQL)
     SELECT
@@ -136,7 +136,9 @@ def prolific_actors
     GROUP BY
       actor.name
     HAVING
-      COUNT(*) >= 30;
+      COUNT(*) >= 15
+    ORDER BY
+      actor.name;
   SQL
 end
 

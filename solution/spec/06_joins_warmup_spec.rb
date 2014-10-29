@@ -39,7 +39,7 @@ describe "JOIN warmup" do
   describe "films_by_id" do
     it "selects the names of the films with the given IDs" do
       expect(films_by_id).to contain_exactly(
-        ["Passenger 57"],
+        ["Big Momma's House"],
         ["Power of One, The"],
         ["To Be or Not to Be"]
       )
