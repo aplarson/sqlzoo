@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: stops
+#
+#  id          :integer      not null, primary key
+#  name        :string
+#
+# Table name: route 
+#
+#  num         :integer      not null, primary key
+#  company     :string       not null, primary key
+#  pos         :integer      not null, primary key
+#  stop        :integer
+
 require_relative './sqlzoo.rb'
 
 def num_stops

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: world 
+#
+#  name        :string       not null, primary key
+#  continent   :string
+#  area        :integer
+#  population  :integer
+#  gdp         :integer
+
 require_relative './sqlzoo.rb'
 
 def example_sum
@@ -5,7 +15,7 @@ def example_sum
     SELECT
       SUM(population)
     FROM
-      bbc
+      world
   SQL
 end
 

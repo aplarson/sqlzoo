@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: actor 
+#
+#  id          :integer      not null, primary key
+#  name        :string
+#
+# Table name: movie 
+#
+#  id          :integer      not null, primary key
+#  title       :string
+#  yr          :integer
+#  score       :float
+#  votes       :integer
+#  director    :integer
+#
+# Table name: casting 
+#
+#  movieid     :integer      not null, primary key
+#  actorid     :integer      not null, primary key
+#  ord         :integer
+
 require_relative './sqlzoo.rb'
 
 def example_join

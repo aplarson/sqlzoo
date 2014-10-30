@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: nobel 
+#
+#  yr          :integer
+#  subject     :string
+#  winner      :string
+
 require_relative './sqlzoo.rb'
 
 def example_select

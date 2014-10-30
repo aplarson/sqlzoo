@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: teacher 
+#
+#  id          :integer      not null, primary key
+#  dept        :integer
+#  name        :string
+#  phone       :integer
+#  mobile      :string
+#
+# Table name: dept 
+#
+#  id          :integer      not null, primary key
+#  name        :string       not null
+
 require_relative './sqlzoo.rb'
 
 def null_dept
