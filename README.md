@@ -14,3 +14,10 @@ calls to the bottom of your `lib/` files and then running them.
 
 [sql-zoo]: http://sqlzoo.net/
 
+Also, if your dataset breaks, you can reset it by running the following command
+from the `datasets/` directory:
+
+```
+cat create_tables.sql | sqlite3 ../sqlzoo.db
+```
+
