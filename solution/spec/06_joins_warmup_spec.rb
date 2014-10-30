@@ -16,22 +16,22 @@ describe "JOIN warmup" do
 
   describe "year_of_kane" do
     it "selects the year that Citizen Kane was released" do
-      expect(year_of_kane).to contain_exactly([1941.0])
+      expect(year_of_kane).to contain_exactly([1941])
     end
   end
 
   describe "trek_films" do
     it "selects all Star Trek films and orders them by year" do
       expect(trek_films).to eq([
-        [402, "Star Trek: The Motion Picture", 1979.0],
-        [209, "Star Trek: The Wrath of Khan", 1982.0],
-        [438, "Star Trek III: The Search for Spock", 1984.0],
-        [349, "Star Trek IV: The Voyage Home", 1986.0],
-        [472, "Star Trek V: The Final Frontier", 1989.0],
-        [410, "Star Trek VI: The Undiscovered Country", 1991.0],
-        [280, "Star Trek: Generations", 1994.0],
-        [68, "Star Trek: First Contact", 1996.0],
-        [252, "Star Trek: Insurrection", 1998.0]
+        [402, "Star Trek: The Motion Picture", 1979],
+        [209, "Star Trek: The Wrath of Khan", 1982],
+        [438, "Star Trek III: The Search for Spock", 1984],
+        [349, "Star Trek IV: The Voyage Home", 1986],
+        [472, "Star Trek V: The Final Frontier", 1989],
+        [410, "Star Trek VI: The Undiscovered Country", 1991],
+        [280, "Star Trek: Generations", 1994],
+        [68, "Star Trek: First Contact", 1996],
+        [252, "Star Trek: Insurrection", 1998]
       ])
     end
   end

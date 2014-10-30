@@ -9,23 +9,23 @@ DROP TABLE teacher;
 DROP TABLE world; 
 
 CREATE TABLE world(
-   name VARCHAR(50) NOT NULL,
-   continent VARCHAR(60),
-   area DECIMAL(10),
-   population DECIMAL(11),
-   gdp DECIMAL(14),
+   name VARCHAR NOT NULL,
+   continent VARCHAR,
+   area INTEGER,
+   population INTEGER,
+   gdp INTEGER,
    PRIMARY KEY (name)
 );
 
 CREATE TABLE nobel(
-  yr INT,
-  subject VARCHAR(15),
-  winner VARCHAR(50)
+  yr INTEGER,
+  subject VARCHAR,
+  winner VARCHAR
 );
 
 CREATE TABLE actor(
   id INTEGER NOT NULL,
-  name VARCHAR(35),
+  name VARCHAR,
   PRIMARY KEY (id)
 );
 
@@ -33,8 +33,8 @@ CREATE INDEX actor_name ON actor(name);
 
 CREATE TABLE movie(
   id INTEGER NOT NULL,
-  title VARCHAR(70),
-  yr DECIMAL(4) ,
+  title VARCHAR,
+  yr INTEGER, 
   score FLOAT,
   votes INTEGER,
   director INTEGER,
@@ -59,13 +59,13 @@ CREATE INDEX casting_ord   ON casting(ord);
 
 CREATE TABLE stops (
   id INTEGER NOT NULL,
-  name VARCHAR(30),
+  name VARCHAR,
   PRIMARY KEY(id)
 );
 
 CREATE TABLE route (
-  num VARCHAR(5) NOT NULL,
-  company VARCHAR(3) NOT NULL,
+  num VARCHAR NOT NULL,
+  company VARCHAR NOT NULL,
   pos INTEGER NOT NULL,
   stop INTEGER,
   FOREIGN KEY(stop) REFERENCES stops(id),
@@ -75,9 +75,9 @@ CREATE TABLE route (
 CREATE TABLE teacher (
   id INTEGER NOT NULL,
   dept INTEGER,
-  name VARCHAR(255),
+  name VARCHAR,
   phone INTEGER,
-  mobile VARCHAR(255),
+  mobile VARCHAR,
   PRIMARY KEY(id),
   FOREIGN KEY(dept) REFERENCES dept(id)
 );
@@ -86,7 +86,7 @@ CREATE INDEX teacher_dept ON teacher(dept);
 
 CREATE TABLE dept (
   id INTEGER NOT NULL,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR NOT NULL,
   PRIMARY KEY(id)
 );
 

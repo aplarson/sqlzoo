@@ -5,7 +5,7 @@ describe 'SELECT basics' do
 
   describe 'select_population_of_germany' do
     it 'selects the population of Germany' do
-      expect(select_population_of_germany).to contain_exactly([82500000.0])
+      expect(select_population_of_germany).to contain_exactly([82500000])
     end
   end
 
@@ -34,10 +34,10 @@ describe 'SELECT basics' do
   describe 'scandinavia' do
     it 'shows the names and populations of Scandinavian countries' do
       expect(scandinavia).to contain_exactly(
-        ["Denmark", 5400000.0],
-        ["Finland", 5200000.0],
-        ["Norway", 4600000.0],
-        ["Sweden", 8900000.0]
+        ["Denmark", 5400000],
+        ["Finland", 5200000],
+        ["Norway", 4600000],
+        ["Sweden", 8900000]
       )
     end
   end

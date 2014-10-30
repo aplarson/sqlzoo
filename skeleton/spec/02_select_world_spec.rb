@@ -46,9 +46,9 @@ describe 'SELECT from world' do
   describe 'name_and_population' do
     it 'selects the name and population of the specified countries' do
       expect(name_and_population).to contain_exactly(
-        ["France", 60700000.0],
-        ["Germany", 82500000.0],
-        ["Italy", 57200000.0]  
+        ["France", 60700000],
+        ["Germany", 82500000],
+        ["Italy", 57200000]  
       )
     end
   end

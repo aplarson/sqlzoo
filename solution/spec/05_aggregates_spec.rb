@@ -20,7 +20,7 @@ describe "Aggregate queries" do
   describe "africa_gdp" do
     it "gives the total GDP of Africa" do
       expect(africa_gdp).to contain_exactly(
-        [410196200000.0]
+        [410196200000]
       )
     end
   end
