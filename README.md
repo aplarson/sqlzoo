@@ -12,12 +12,7 @@ bundle exec rspec spec/01_select_exercises.rb
 If you need to run sample queries, you can do so in pry or by adding method
 calls to the bottom of your `lib/` files and then running them.
 
+Also, if your dataset breaks, you can reset it by running `./import_db.sh`
+from the `data/` directory.
+
 [sql-zoo]: http://sqlzoo.net/
-
-Also, if your dataset breaks, you can reset it by running the following command
-from the `datasets/` directory:
-
-```
-cat create_tables.sql | sqlite3 ../sqlzoo.db
-```
-
