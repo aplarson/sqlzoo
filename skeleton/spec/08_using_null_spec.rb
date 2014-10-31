@@ -40,7 +40,7 @@ describe "using NULL" do
         ["Throd", "07122 555 1920"],
         ["Splint", "07986 444 2266"],
         ["Spiregrain", "07986 444 2266"],
-        ["Cutflower", "07996 555 6574"],
+        ["Cutflower", "07966 555 6574"],
         ["Deadyawn", "07986 444 2266"]
       )
     end
@@ -61,16 +61,16 @@ describe "using NULL" do
 
   describe "num_teachers_and_mobiles" do
     it "shows the number of teachers and the number of mobile numbers" do
-      expect(num_teachers_and_mobiles).to contain_exactly([6, 3])
+      expect(num_teachers_and_mobiles).to contain_exactly(["6", "3"])
     end
   end
 
   describe "dept_staff_counts" do
     it "shows the name and number of staff of each department" do
       expect(dept_staff_counts).to contain_exactly(
-        ["Computing", 3],
-        ["Design", 1],
-        ["Engineering", 0]
+        ["Computing", "3"],
+        ["Design", "1"],
+        ["Engineering", "0"]
       )
     end
   end

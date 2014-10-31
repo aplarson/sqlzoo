@@ -4,28 +4,28 @@ require '09_self_joins'
 describe "self-JOIN exercises" do
   describe "num_stops" do
     it "shows the number of stops in the table" do
-      expect(num_stops).to contain_exactly([246])
+      expect(num_stops).to contain_exactly(["246"])
     end
   end
 
   describe "craiglockhart_id" do
     it "shows the ID of the stop Craiglockhart" do
-      expect(craiglockhart_id).to contain_exactly([53])
+      expect(craiglockhart_id).to contain_exactly(["53"])
     end
   end
 
   describe "lrt_stops" do
     it "shows the ids and names of stops on the 4 LRT service" do
       expect(lrt_stops).to contain_exactly(
-        [19, "Bingham"],
-        [177, "Northfield"],
-        [149, "London Road"],
-        [194, "Princes Street"],
-        [115, "Haymarket"],
-        [53, "Craiglockhart"],
-        [179, "Oxgangs"],
-        [85, "Fairmilehead"],
-        [117, "Hillend"]
+        ["19", "Bingham"],
+        ["177", "Northfield"],
+        ["149", "London Road"],
+        ["194", "Princes Street"],
+        ["115", "Haymarket"],
+        ["53", "Craiglockhart"],
+        ["179", "Oxgangs"],
+        ["85", "Fairmilehead"],
+        ["117", "Hillend"]
       )
     end
   end
@@ -33,34 +33,34 @@ describe "self-JOIN exercises" do
   describe "connecting_routes" do
     it "shows the routes that connect London Road with Craiglockhart" do
       expect(connecting_routes).to contain_exactly(
-        ["LRT", "10", 1],
-        ["LRT", "15", 1],
-        ["LRT", "20", 1],
-        ["LRT", "26A", 1],
-        ["LRT", "27", 1],
-        ["LRT", "34", 1],
-        ["LRT", "35", 1],
-        ["LRT", "4", 2],
-        ["LRT", "42", 1],
-        ["LRT", "43", 1],
-        ["LRT", "44", 1],
-        ["LRT", "45", 2],
-        ["LRT", "46A", 1],
-        ["LRT", "47", 1],
-        ["LRT", "5", 1],
-        ["LRT", "51", 1],
-        ["LRT", "63", 1],
-        ["LRT", "65", 1],
-        ["LRT", "75", 1],
-        ["LRT", "87", 1],
-        ["LRT", "87A", 1],
-        ["SMT", "106", 1],
-        ["SMT", "113", 1],
-        ["SMT", "124", 1],
-        ["SMT", "66", 1],
-        ["SMT", "66A", 1],
-        ["SMT", "C5", 1],
-        ["SMT", "C55", 1]
+        ["LRT", "47", "1"],
+        ["LRT", "5", "1"],
+        ["LRT", "43", "1"],
+        ["LRT", "44", "1"],
+        ["LRT", "27", "1"],
+        ["LRT", "34", "1"],
+        ["LRT", "63", "1"],
+        ["LRT", "26A", "1"],
+        ["SMT", "113", "1"],
+        ["SMT", "124", "1"],
+        ["LRT", "20", "1"],
+        ["LRT", "42", "1"],
+        ["LRT", "87A", "1"],
+        ["SMT", "C55", "1"],
+        ["LRT", "15", "1"],
+        ["LRT", "35", "1"],
+        ["SMT", "66A", "1"],
+        ["LRT", "75", "1"],
+        ["LRT", "87", "1"],
+        ["SMT", "106", "1"],
+        ["LRT", "65", "1"],
+        ["LRT", "51", "1"],
+        ["LRT", "10", "1"],
+        ["LRT", "46A", "1"],
+        ["SMT", "C5", "1"],
+        ["LRT", "45", "2"],
+        ["SMT", "66", "1"],
+        ["LRT", "4", "2"]
       )
     end
   end
@@ -68,52 +68,52 @@ describe "self-JOIN exercises" do
   describe "cl_to_lr" do
     it "shows routes from Craiglockhart to London Road" do
       expect(cl_to_lr).to contain_exactly(
-        ["LRT", "4", 53, 19],
-        ["LRT", "4", 53, 177],
-        ["LRT", "4", 53, 149],
-        ["LRT", "4", 53, 194],
-        ["LRT", "4", 53, 115],
-        ["LRT", "4", 53, 53],
-        ["LRT", "4", 53, 179],
-        ["LRT", "4", 53, 85],
-        ["LRT", "4", 53, 117],
-        ["LRT", "10", 53, 215],
-        ["LRT", "10", 53, 162],
-        ["LRT", "10", 53, 167],
-        ["LRT", "10", 53, 137],
-        ["LRT", "10", 53, 141],
-        ["LRT", "10", 53, 194],
-        ["LRT", "10", 53, 230],
-        ["LRT", "10", 53, 53],
-        ["LRT", "10", 53, 46],
-        ["LRT", "10", 53, 231],
-        ["LRT", "27", 53, 215],
-        ["LRT", "27", 53, 59],
-        ["LRT", "27", 53, 37],
-        ["LRT", "27", 53, 112],
-        ["LRT", "27", 53, 230],
-        ["LRT", "27", 53, 53],
-        ["LRT", "27", 53, 179],
-        ["LRT", "27", 53, 120],
-        ["LRT", "45", 53, 33],
-        ["LRT", "45", 53, 71],
-        ["LRT", "45", 53, 177],
-        ["LRT", "45", 53, 149],
-        ["LRT", "45", 53, 112],
-        ["LRT", "45", 53, 230],
-        ["LRT", "45", 53, 53],
-        ["LRT", "45", 53, 46],
-        ["LRT", "45", 53, 60],
-        ["LRT", "45", 53, 201],
-        ["LRT", "47", 53, 37],
-        ["LRT", "47", 53, 112],
-        ["LRT", "47", 53, 230],
-        ["LRT", "47", 53, 53],
-        ["LRT", "47", 53, 46],
-        ["LRT", "47", 53, 60],
-        ["LRT", "47", 53, 10],
-        ["LRT", "47", 53, 45],
-        ["LRT", "47", 53, 11]
+        ["LRT", "4", "53", "19"],
+        ["LRT", "4", "53", "177"],
+        ["LRT", "4", "53", "149"],
+        ["LRT", "4", "53", "194"],
+        ["LRT", "4", "53", "115"],
+        ["LRT", "4", "53", "53"],
+        ["LRT", "4", "53", "179"],
+        ["LRT", "4", "53", "85"],
+        ["LRT", "4", "53", "117"],
+        ["LRT", "10", "53", "215"],
+        ["LRT", "10", "53", "162"],
+        ["LRT", "10", "53", "167"],
+        ["LRT", "10", "53", "137"],
+        ["LRT", "10", "53", "141"],
+        ["LRT", "10", "53", "194"],
+        ["LRT", "10", "53", "230"],
+        ["LRT", "10", "53", "53"],
+        ["LRT", "10", "53", "46"],
+        ["LRT", "10", "53", "231"],
+        ["LRT", "27", "53", "215"],
+        ["LRT", "27", "53", "59"],
+        ["LRT", "27", "53", "37"],
+        ["LRT", "27", "53", "112"],
+        ["LRT", "27", "53", "230"],
+        ["LRT", "27", "53", "53"],
+        ["LRT", "27", "53", "179"],
+        ["LRT", "27", "53", "120"],
+        ["LRT", "45", "53", "33"],
+        ["LRT", "45", "53", "71"],
+        ["LRT", "45", "53", "177"],
+        ["LRT", "45", "53", "149"],
+        ["LRT", "45", "53", "112"],
+        ["LRT", "45", "53", "230"],
+        ["LRT", "45", "53", "53"],
+        ["LRT", "45", "53", "46"],
+        ["LRT", "45", "53", "60"],
+        ["LRT", "45", "53", "201"],
+        ["LRT", "47", "53", "37"],
+        ["LRT", "47", "53", "112"],
+        ["LRT", "47", "53", "230"],
+        ["LRT", "47", "53", "53"],
+        ["LRT", "47", "53", "46"],
+        ["LRT", "47", "53", "60"],
+        ["LRT", "47", "53", "10"],
+        ["LRT", "47", "53", "45"],
+        ["LRT", "47", "53", "11"]
       )
     end
   end
@@ -121,6 +121,15 @@ describe "self-JOIN exercises" do
   describe "cl_to_lr_by_name" do
     it "shows routes from Craiglockhart to London Road" do
       expect(cl_to_lr_by_name).to contain_exactly(
+        ["LRT", "4", "Craiglockhart", "Bingham"],
+        ["LRT", "4", "Craiglockhart", "Northfield"],
+        ["LRT", "4", "Craiglockhart", "London Road"],
+        ["LRT", "4", "Craiglockhart", "Princes Street"],
+        ["LRT", "4", "Craiglockhart", "Haymarket"],
+        ["LRT", "4", "Craiglockhart", "Craiglockhart"],
+        ["LRT", "4", "Craiglockhart", "Oxgangs"],
+        ["LRT", "4", "Craiglockhart", "Fairmilehead"],
+        ["LRT", "4", "Craiglockhart", "Hillend"],
         ["LRT", "10", "Craiglockhart", "Silverknowes"],
         ["LRT", "10", "Craiglockhart", "Muirhouse"],
         ["LRT", "10", "Craiglockhart", "Newhaven"],
@@ -139,15 +148,6 @@ describe "self-JOIN exercises" do
         ["LRT", "27", "Craiglockhart", "Craiglockhart"],
         ["LRT", "27", "Craiglockhart", "Oxgangs"],
         ["LRT", "27", "Craiglockhart", "Hunters Tryst"],
-        ["LRT", "4", "Craiglockhart", "Bingham"],
-        ["LRT", "4", "Craiglockhart", "Northfield"],
-        ["LRT", "4", "Craiglockhart", "London Road"],
-        ["LRT", "4", "Craiglockhart", "Princes Street"],
-        ["LRT", "4", "Craiglockhart", "Haymarket"],
-        ["LRT", "4", "Craiglockhart", "Craiglockhart"],
-        ["LRT", "4", "Craiglockhart", "Oxgangs"],
-        ["LRT", "4", "Craiglockhart", "Fairmilehead"],
-        ["LRT", "4", "Craiglockhart", "Hillend"],
         ["LRT", "45", "Craiglockhart", "Brunstane"],
         ["LRT", "45", "Craiglockhart", "Duddingston"],
         ["LRT", "45", "Craiglockhart", "Northfield"],
