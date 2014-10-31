@@ -2,8 +2,7 @@ require 'pg'
 
 def execute(sql)
   conn = PG::Connection.open(:dbname => 'sqlzoo')
-  res = conn.exec(sql)
-  res.values
+  conn.exec(sql).values
 end
 
 def test_query
@@ -12,21 +11,10 @@ def test_query
       *
     FROM
       world
+    WHERE
+      population > 1000;
   SQL
 end
-
-# require 'singleton'
-# require 'sqlite3'
-# 
-# class SqlZooDatabase < SQLite3::Database
-#   include Singleton
-# 
-#   def initialize
-#     # super(Dir.pwd + "/../sqlzoo.db")
-#     super(File.dirname(__FILE__) + "/../sqlzoo.db")
-#     self.type_translation = true
-#   end
-# end
 
 if __FILE__ == $PROGRAM_NAME
   p test_query 

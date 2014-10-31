@@ -11,7 +11,7 @@
 require_relative './sqlzoo.rb'
 
 def example_select_with_subquery
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       name
     FROM
@@ -30,7 +30,7 @@ end
 
 def larger_than_russia
   # List each country name where the population is larger than 'Russia'.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       w1.name
     FROM
@@ -50,7 +50,7 @@ end
 def richer_than_england
   # Show the countries in Europe with a per capita GDP greater than
   # 'United Kingdom'.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       world.name
     FROM
@@ -71,7 +71,7 @@ end
 def neighbors_of_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       world.name, world.continent
     FROM
@@ -91,7 +91,7 @@ end
 def population_constraint
   # Which country has a population that is more than Canada but less than
   # Poland? Show the name and the population.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       world.name, world.population
     FROM
@@ -126,7 +126,7 @@ end
 def highest_gdp
   # Which countries have a GDP greater than every country in Europe? (Give the
   # name only. Some countries may have NULL gdp values)
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       world.name
     FROM
@@ -150,7 +150,7 @@ end
 def largest_in_continent
   # Find the largest country (by area) in each continent. Show the continent,
   # name, and area.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       w1.continent, w1.name, w1.area
     FROM
@@ -173,7 +173,7 @@ end
 def sparse_continents
   # Find each country that belongs to a continent where all populations are
   # less than 25,000,000. Show name, continent and population.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       w1.name, w1.continent, w1.population
     FROM
@@ -193,7 +193,7 @@ end
 def large_neighbors
   # Some countries have populations more than three times that of any of their
   # neighbors (in the same continent). Give the countries and continents.
-  SqlZooDatabase.instance.execute(<<-SQL)
+  execute(<<-SQL)
     SELECT
       w1.name, w1.continent
     FROM

@@ -3,9 +3,9 @@ DROP TABLE world;
 
 CREATE TABLE world(
    name VARCHAR NOT NULL
-   ,region VARCHAR
+   ,continent VARCHAR
    ,area INTEGER    
-   ,population INTEGER
+   ,population BIGINT 
    ,gdp BIGINT 
    ,PRIMARY KEY (name)
    );

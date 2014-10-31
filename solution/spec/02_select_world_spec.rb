@@ -16,10 +16,10 @@ describe 'SELECT from world' do
   describe 'high_population_gdps' do
     it 'selects names and per capita GDPs' do
       expect(high_population_gdps).to contain_exactly(
-        ["China", 1290],
-        ["India", 620],
-        ["Indonesia", 1140],
-        ["United States of America", 41400]
+        ["China", "1290"],
+        ["India", "620"],
+        ["Indonesia", "1140"],
+        ["United States of America", "41400"]
       )
     end
   end
@@ -27,18 +27,18 @@ describe 'SELECT from world' do
   describe 'population_in_millions' do
     it 'selects the population in millions of countries in South America' do
       expect(population_in_millions).to contain_exactly(
-        ["Argentina", 39],
-        ["Bolivia", 9],
-        ["Brazil", 182],
-        ["Chile", 16],
-        ["Colombia", 45],
-        ["Ecuador", 13],
-        ["Guyana", 0],
-        ["Paraguay", 6],
-        ["Peru", 28],
-        ["Surinam", 0],
-        ["Uruguay", 3],
-        ["Venezuela", 26]
+        ["Argentina", "39"],
+        ["Bolivia", "9"],
+        ["Brazil", "182"],
+        ["Chile", "16"],
+        ["Colombia", "45"],
+        ["Ecuador", "13"],
+        ["Guyana", "0"],
+        ["Paraguay", "6"],
+        ["Peru", "28"],
+        ["Surinam", "0"],
+        ["Uruguay", "3"],
+        ["Venezuela", "26"]
       )
     end
   end
@@ -46,9 +46,9 @@ describe 'SELECT from world' do
   describe 'name_and_population' do
     it 'selects the name and population of the specified countries' do
       expect(name_and_population).to contain_exactly(
-        ["France", 60700000],
-        ["Germany", 82500000],
-        ["Italy", 57200000]  
+        ["France", "60700000"],
+        ["Germany", "82500000"],
+        ["Italy", "57200000"]  
       )
     end
   end

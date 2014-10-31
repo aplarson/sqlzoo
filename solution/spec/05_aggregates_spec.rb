@@ -20,7 +20,7 @@ describe "Aggregate queries" do
   describe "africa_gdp" do
     it "gives the total GDP of Africa" do
       expect(africa_gdp).to contain_exactly(
-        [410196200000]
+        ["410196200000"]
       )
     end
   end
@@ -28,7 +28,7 @@ describe "Aggregate queries" do
   describe "area_count" do
     it "selects the countries with an area of at least 1 million" do
       expect(area_count).to contain_exactly(
-        [28]
+        ["28"]
       )
     end
   end
@@ -36,7 +36,7 @@ describe "Aggregate queries" do
   describe "group_population" do
     it "sums the population for the given countries" do
       expect(group_population).to contain_exactly(
-        [187300000]
+        ["187300000"]
       )
     end
   end
@@ -44,14 +44,14 @@ describe "Aggregate queries" do
   describe "country_counts" do
     it "shows the name and number of countries of each continent" do
       expect(country_counts).to contain_exactly(
-        ["Africa", 47],
-        ["Americas", 20],
-        ["Asia-Pacific", 36],
-        ["Europe", 48],
-        ["Middle East", 19],
-        ["North America", 3],
-        ["South America", 12],
-        ["South Asia", 8]
+        ["Africa", "47"],
+        ["Americas", "20"],
+        ["Asia-Pacific", "36"],
+        ["Europe", "48"],
+        ["Middle East", "19"],
+        ["North America", "3"],
+        ["South America", "12"],
+        ["South Asia", "8"]
       )
     end
   end
@@ -59,14 +59,14 @@ describe "Aggregate queries" do
   describe "populous_country_counts" do
     it "shows the number of populous countries for each continent" do
       expect(populous_country_counts).to contain_exactly(
-        ["Africa", 21],
-        ["Americas", 2],
-        ["Asia-Pacific", 15],
-        ["Europe", 16],
-        ["Middle East", 9],
-        ["North America", 3],
-        ["South America", 7],
-        ["South Asia", 6]
+        ["Africa", "21"],
+        ["Americas", "2"],
+        ["Asia-Pacific", "15"],
+        ["Europe", "16"],
+        ["Middle East", "9"],
+        ["North America", "3"],
+        ["South America", "7"],
+        ["South Asia", "6"]
       )
     end
   end

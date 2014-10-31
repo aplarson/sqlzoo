@@ -108,10 +108,10 @@ describe "SELECT within SELECT" do
   describe "population_constraint" do
     it "selects countries with a population between Poland and Canada" do
       expect(population_constraint).to contain_exactly(
-        ["Algeria", 32900000],
-        ["Kenya", 32800000],
-        ["Sudan", 35000000],
-        ["Tanzania", 38400000]
+        ["Algeria", "32900000"],
+        ["Kenya", "32800000"],
+        ["Sudan", "35000000"],
+        ["Tanzania", "38400000"]
       )
     end
   end 
@@ -128,14 +128,14 @@ describe "SELECT within SELECT" do
   describe "largest_in_continent" do
     it "selects the countries with the largest areas in their continents" do
       expect(largest_in_continent).to contain_exactly(
-        ["South America", "Brazil", 8550000],
-        ["North America", "Canada", 9900000],
-        ["Asia-Pacific", "China", 9600000],
-        ["Africa", "Democratic Republic of Congo", 2340000],
-        ["South Asia", "India", 3100000],
-        ["Americas", "Nicaragua", 120254],
-        ["Europe", "Russia", 17000000],
-        ["Middle East", "Sudan", 2500000]
+        ["South America", "Brazil", "8550000"],
+        ["North America", "Canada", "9900000"],
+        ["Asia-Pacific", "China", "9600000"],
+        ["Africa", "Democratic Republic of Congo", "2340000"],
+        ["South Asia", "India", "3100000"],
+        ["Americas", "Nicaragua", "120254"],
+        ["Europe", "Russia", "17000000"],
+        ["Middle East", "Sudan", "2500000"]
       )
     end
   end
@@ -143,26 +143,26 @@ describe "SELECT within SELECT" do
   describe "sparse_continents" do
     it "selects countries in sparsely populated continents" do
       expect(sparse_continents).to contain_exactly(
-        ["Antigua and Barbuda", "Americas", 77000],
-        ["Bahamas", "Americas", 321000],
-        ["Barbados", "Americas", 272000],
-        ["Belize", "Americas", 266000],
-        ["Costa Rica", "Americas", 4300000],
-        ["Cuba", "Americas", 11300000],
-        ["Dominica", "Americas", 71000],
-        ["Dominican Republic", "Americas", 9000000],
-        ["El Salvador", "Americas", 6700000],
-        ["Grenada", "Americas", 103000],
-        ["Guatemala", "Americas", 13000000],
-        ["Haiti", "Americas", 8500000],
-        ["Honduras", "Americas", 7200000],
-        ["Jamaica", "Americas", 2700000],
-        ["Nicaragua", "Americas", 5700000],
-        ["Panama", "Americas", 3200000],
-        ["St Kitts and Nevis", "Americas", 46000],
-        ["St Lucia", "Americas", 152000],
-        ["St Vincent and the Grenadines", "Americas", 121000],
-        ["Trinidad and Tobago", "Americas", 1300000]
+        ["Antigua and Barbuda", "Americas", "77000"],
+        ["Bahamas", "Americas", "321000"],
+        ["Barbados", "Americas", "272000"],
+        ["Belize", "Americas", "266000"],
+        ["Costa Rica", "Americas", "4300000"],
+        ["Cuba", "Americas", "11300000"],
+        ["Dominica", "Americas", "71000"],
+        ["Dominican Republic", "Americas", "9000000"],
+        ["El Salvador", "Americas", "6700000"],
+        ["Grenada", "Americas", "103000"],
+        ["Guatemala", "Americas", "13000000"],
+        ["Haiti", "Americas", "8500000"],
+        ["Honduras", "Americas", "7200000"],
+        ["Jamaica", "Americas", "2700000"],
+        ["Nicaragua", "Americas", "5700000"],
+        ["Panama", "Americas", "3200000"],
+        ["St Kitts and Nevis", "Americas", "46000"],
+        ["St Lucia", "Americas", "152000"],
+        ["St Vincent and the Grenadines", "Americas", "121000"],
+        ["Trinidad and Tobago", "Americas", "1300000"]
       )
     end
   end
