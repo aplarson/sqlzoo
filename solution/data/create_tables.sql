@@ -29,21 +29,10 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
---
--- Name: actor; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE TABLE actor (
     id integer NOT NULL,
     name character varying
 );
-
-
-ALTER TABLE public.actor OWNER TO rglassett;
-
---
--- Name: casting; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
 
 CREATE TABLE casting (
     movieid integer NOT NULL,
@@ -51,24 +40,10 @@ CREATE TABLE casting (
     ord integer
 );
 
-
-ALTER TABLE public.casting OWNER TO rglassett;
-
---
--- Name: dept; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE TABLE dept (
     id integer NOT NULL,
     name character varying NOT NULL
 );
-
-
-ALTER TABLE public.dept OWNER TO rglassett;
-
---
--- Name: movie; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
 
 CREATE TABLE movie (
     id integer NOT NULL,
@@ -79,25 +54,11 @@ CREATE TABLE movie (
     director integer
 );
 
-
-ALTER TABLE public.movie OWNER TO rglassett;
-
---
--- Name: nobel; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE TABLE nobel (
     yr integer,
     subject character varying,
     winner character varying
 );
-
-
-ALTER TABLE public.nobel OWNER TO rglassett;
-
---
--- Name: route; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
 
 CREATE TABLE route (
     num character varying NOT NULL,
@@ -107,23 +68,10 @@ CREATE TABLE route (
 );
 
 
-ALTER TABLE public.route OWNER TO rglassett;
-
---
--- Name: stops; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE TABLE stops (
     id integer NOT NULL,
     name character varying
 );
-
-
-ALTER TABLE public.stops OWNER TO rglassett;
-
---
--- Name: teacher; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
 
 CREATE TABLE teacher (
     id integer NOT NULL,
@@ -133,13 +81,6 @@ CREATE TABLE teacher (
     mobile character varying
 );
 
-
-ALTER TABLE public.teacher OWNER TO rglassett;
-
---
--- Name: world; Type: TABLE; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE TABLE world (
     name character varying NOT NULL,
     continent character varying,
@@ -147,13 +88,6 @@ CREATE TABLE world (
     population bigint,
     gdp bigint
 );
-
-
-ALTER TABLE public.world OWNER TO rglassett;
-
---
--- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: rglassett
---
 
 COPY actor (id, name) FROM stdin;
 1	Woody Allen
@@ -6102,11 +6036,6 @@ COPY actor (id, name) FROM stdin;
 5944	Ken Curtis (I)
 5945	Gwen Verdon
 \.
-
-
---
--- Data for Name: casting; Type: TABLE DATA; Schema: public; Owner: rglassett
---
 
 COPY casting (movieid, actorid, ord) FROM stdin;
 972	588	1
@@ -21824,21 +21753,11 @@ COPY casting (movieid, actorid, ord) FROM stdin;
 542	5945	9
 \.
 
-
---
--- Data for Name: dept; Type: TABLE DATA; Schema: public; Owner: rglassett
---
-
 COPY dept (id, name) FROM stdin;
 1	Computing
 2	Design
 3	Engineering
 \.
-
-
---
--- Data for Name: movie; Type: TABLE DATA; Schema: public; Owner: rglassett
---
 
 COPY movie (id, title, yr, score, votes, director) FROM stdin;
 1	Star Wars	1977	8.80000000000000071	53567	360
@@ -23688,11 +23607,6 @@ COPY movie (id, title, yr, score, votes, director) FROM stdin;
 1845	Hollywood Knights, The	1980	5.5	721	2016
 \.
 
-
---
--- Data for Name: nobel; Type: TABLE DATA; Schema: public; Owner: rglassett
---
-
 COPY nobel (yr, subject, winner) FROM stdin;
 2008	Chemistry	Martin Chalfie
 2008	Chemistry	Osamu Shimomura
@@ -24511,11 +24425,6 @@ COPY nobel (yr, subject, winner) FROM stdin;
 1901	Peace	FrÃ©dÃ©ric Passy
 1901	Physics	Wilhelm Conrad RÃ¶ntgen
 \.
-
-
---
--- Data for Name: route; Type: TABLE DATA; Schema: public; Owner: rglassett
---
 
 COPY route (num, company, pos, stop) FROM stdin;
 1	LRT	1	137
@@ -25694,11 +25603,6 @@ VL2	VL	3	60
 VL2	VL	4	10
 \.
 
-
---
--- Data for Name: stops; Type: TABLE DATA; Schema: public; Owner: rglassett
---
-
 COPY stops (id, name) FROM stdin;
 1	Aberlady
 2	Abington
@@ -25948,11 +25852,6 @@ COPY stops (id, name) FROM stdin;
 250	Winchburgh
 \.
 
-
---
--- Data for Name: teacher; Type: TABLE DATA; Schema: public; Owner: rglassett
---
-
 COPY teacher (id, dept, name, phone, mobile) FROM stdin;
 101	1	Shrivell	2753	07966 555 1234
 102	1	Throd	2754	07122 555 1920
@@ -25961,11 +25860,6 @@ COPY teacher (id, dept, name, phone, mobile) FROM stdin;
 105	2	Cutflower	3212	07966 555 6574
 106	\N	Deadyawn	3345	\N
 \.
-
-
---
--- Data for Name: world; Type: TABLE DATA; Schema: public; Owner: rglassett
---
 
 COPY world (name, continent, area, population, gdp) FROM stdin;
 Afghanistan	South Asia	652225	26000000	\N
@@ -26163,160 +26057,58 @@ Zambia	Africa	752614	11000000	4950000000
 Zimbabwe	Africa	390759	12900000	6192000000
 \.
 
-
---
--- Name: actor_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
-
 ALTER TABLE ONLY actor
     ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
-
-
---
--- Name: casting_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
 
 ALTER TABLE ONLY casting
     ADD CONSTRAINT casting_pkey PRIMARY KEY (movieid, actorid);
 
-
---
--- Name: dept_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
-
 ALTER TABLE ONLY dept
     ADD CONSTRAINT dept_pkey PRIMARY KEY (id);
-
-
---
--- Name: movie_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
 
 ALTER TABLE ONLY movie
     ADD CONSTRAINT movie_pkey PRIMARY KEY (id);
 
-
---
--- Name: route_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
-
 ALTER TABLE ONLY route
     ADD CONSTRAINT route_pkey PRIMARY KEY (num, company, pos);
-
-
---
--- Name: stops_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
 
 ALTER TABLE ONLY stops
     ADD CONSTRAINT stops_pkey PRIMARY KEY (id);
 
-
---
--- Name: teacher_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
-
 ALTER TABLE ONLY teacher
     ADD CONSTRAINT teacher_pkey PRIMARY KEY (id);
-
-
---
--- Name: world_pkey; Type: CONSTRAINT; Schema: public; Owner: rglassett; Tablespace: 
---
 
 ALTER TABLE ONLY world
     ADD CONSTRAINT world_pkey PRIMARY KEY (name);
 
-
---
--- Name: actor_name; Type: INDEX; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE INDEX actor_name ON actor USING btree (name);
-
-
---
--- Name: casting_actor; Type: INDEX; Schema: public; Owner: rglassett; Tablespace: 
---
 
 CREATE INDEX casting_actor ON casting USING btree (actorid);
 
-
---
--- Name: casting_movie; Type: INDEX; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE INDEX casting_movie ON casting USING btree (movieid);
-
-
---
--- Name: casting_ord; Type: INDEX; Schema: public; Owner: rglassett; Tablespace: 
---
 
 CREATE INDEX casting_ord ON casting USING btree (ord);
 
-
---
--- Name: movie_title; Type: INDEX; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE INDEX movie_title ON movie USING btree (title);
 
-
---
--- Name: teacher_dept; Type: INDEX; Schema: public; Owner: rglassett; Tablespace: 
---
-
 CREATE INDEX teacher_dept ON teacher USING btree (dept);
-
-
---
--- Name: casting_actorid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rglassett
---
 
 ALTER TABLE ONLY casting
     ADD CONSTRAINT casting_actorid_fkey FOREIGN KEY (actorid) REFERENCES actor(id);
 
-
---
--- Name: casting_movieid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rglassett
---
-
 ALTER TABLE ONLY casting
     ADD CONSTRAINT casting_movieid_fkey FOREIGN KEY (movieid) REFERENCES movie(id);
-
-
---
--- Name: movie_director_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rglassett
---
 
 ALTER TABLE ONLY movie
     ADD CONSTRAINT movie_director_fkey FOREIGN KEY (director) REFERENCES actor(id);
 
-
---
--- Name: route_stop_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rglassett
---
-
 ALTER TABLE ONLY route
     ADD CONSTRAINT route_stop_fkey FOREIGN KEY (stop) REFERENCES stops(id);
-
-
---
--- Name: teacher_dept_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rglassett
---
 
 ALTER TABLE ONLY teacher
     ADD CONSTRAINT teacher_dept_fkey FOREIGN KEY (dept) REFERENCES dept(id);
 
-
---
--- Name: public; Type: ACL; Schema: -; Owner: rglassett
---
-
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM rglassett;
-GRANT ALL ON SCHEMA public TO rglassett;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
