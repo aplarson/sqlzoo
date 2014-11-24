@@ -169,19 +169,17 @@ def films_by_cast_size
   # in the cast.
   execute(<<-SQL)
     SELECT
-      movie.title, COUNT(*)
+      movie.title, COUNT(DISTINCT casting.actorid) AS actor_count
     FROM
       movie
     JOIN
       casting ON casting.movieid = movie.id
-    JOIN
-      actor ON actor.id = casting.actorid
     WHERE
       movie.yr = 1978
     GROUP BY
       movie.id
     ORDER BY
-      COUNT(*) DESC, movie.id ASC;
+      COUNT(*) DESC;
   SQL
 end
 

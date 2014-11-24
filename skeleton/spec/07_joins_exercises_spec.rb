@@ -98,22 +98,22 @@ describe "JOIN exercises" do
     it "selects 1978 films and orders by cast size" do
       expect(films_by_cast_size).to eq([
         ["Death on the Nile", "12"],
-        ["Heaven Can Wait", "11"],
         ["Capricorn One", "11"],
         ["Foul Play", "11"],
-        ["Animal House", "9"],
+        ["Heaven Can Wait", "11"],
         ["Superman", "9"],
-        ["Midnight Express", "9"],
         ["Watership Down", "9"],
+        ["Midnight Express", "9"],
         ["Boys from Brazil, The", "9"],
+        ["Animal House", "9"],
         ["Grease", "8"],
         ["Deer Hunter, The", "8"],
         ["Halloween", "8"],
         ["Coma", "7"],
         ["Attack of the Killer Tomatoes!", "7"],
         ["Damien: Omen II", "7"],
-        ["Up in Smoke", "6"],
         ["Days of Heaven", "6"],
+        ["Up in Smoke", "6"],
         ["Dawn of the Dead", "5"]
       ])
     end
