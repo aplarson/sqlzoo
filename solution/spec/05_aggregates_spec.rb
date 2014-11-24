@@ -26,7 +26,7 @@ describe "Aggregate queries" do
   end
 
   describe "area_count" do
-    it "selects the countries with an area of at least 1 million" do
+    it "selects the countries with an area of more than 1 million" do
       expect(area_count).to contain_exactly(
         ["28"]
       )

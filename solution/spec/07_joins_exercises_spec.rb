@@ -63,7 +63,7 @@ describe "JOIN exercises" do
     it "selects the year and number of movies of John Travolta's busy years" do
       expect(travoltas_busiest_years).to contain_exactly(
         ["1996", "2"],
-        ["1998", "2"] 
+        ["1998", "2"]
       )
     end
   end
@@ -79,7 +79,7 @@ describe "JOIN exercises" do
   end
 
   describe "prolific_actors" do
-    it "selects and orders the actors who have had more than 30 roles" do
+    it "selects and orders the actors who have had more than 15 starring roles" do
       expect(prolific_actors).to eq([
         ["Al Pacino"],
         ["Arnold Schwarzenegger"],

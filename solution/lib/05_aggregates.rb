@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world 
+# Table name: world
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -42,7 +42,7 @@ def africa_gdp
 end
 
 def area_count
-  # How many countries have an area of at least 1,000,000?
+  # How many countries have an area of more than 1,000,000?
   execute(<<-SQL)
     SELECT
       COUNT(*)
