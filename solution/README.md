@@ -1,6 +1,4 @@
 # SQL Zoo
-Adapted from the [original SQL Zoo exercises][sql-zoo].
-
 To get started, navigate to the skeleton directory and run `bundle install`.
 We recommend going through the exercises in order. You can run the specs one
 section at a time using the following syntax:
@@ -14,5 +12,3 @@ calls to the bottom of your `lib/` files and then running them.
 
 Also, if your dataset breaks, you can reset it by running `./import_db.sh`
 from the `data/` directory.
-
-[sql-zoo]: http://sqlzoo.net/
