@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world 
+# Table name: world
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -199,15 +199,14 @@ def large_neighbors
     FROM
       world w1
     WHERE
-      ((w1.population IS NOT NULL) AND (
-          SELECT
-            COUNT(*)
-          FROM
-            world w2
-          WHERE
-            ((w1.continent = w2.continent)
-              AND (w1.name != w2.name) -- got me!
-              AND (3 * w2.population >= w1.population))
-        ) = 0);
+      population > 3 * (
+        SELECT
+          MAX(w2.population)
+        FROM
+          world w2
+        WHERE
+          w1.name != w2.name -- got me!
+            AND w1.continent = w2.continent
+      )
   SQL
 end
