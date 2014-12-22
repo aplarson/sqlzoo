@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: teacher 
+# Table name: teacher
 #
 #  id          :integer      not null, primary key
 #  dept        :integer
@@ -8,7 +8,7 @@
 #  phone       :integer
 #  mobile      :string
 #
-# Table name: dept 
+# Table name: dept
 #
 #  id          :integer      not null, primary key
 #  name        :string       not null
@@ -21,8 +21,9 @@ def null_dept
   SQL
 end
 
-def all_teachers_join 
-  # Use a different JOIN so that all teachers are listed.
+def all_teachers_join
+  # Use a type of JOIN that will list all teachers and their department,
+  # even if the department in NULL/nil.
   execute(<<-SQL)
   SQL
 end
@@ -39,7 +40,7 @@ def teachers_and_mobiles
   # Use COALESCE to print the mobile number. Use the number '07986
   # #444 2266' there is no number given. Show teacher name and mobile
   # #number or '07986 444 2266'
-  execute(<<-SQL) 
+  execute(<<-SQL)
   SQL
 end
 
