@@ -17,6 +17,12 @@ describe 'SELECT from nobel' do
     end
   end
 
+  describe 'literature_1962' do
+    it 'selects the winner of the literature prize in 1962' do
+      expect(literature_1962).to contain_exactly(['John Steinbeck'])
+    end
+  end
+
   describe 'einstein_prize' do
     it 'selects the year and subject in which Albert Einstein won his prize' do
       expect(einstein_prize).to contain_exactly(["1921", "Physics"])
@@ -59,7 +65,7 @@ describe 'SELECT from nobel' do
       )
     end
   end
- 
+
   describe 'presidential_prizes' do
     it 'shows details of presidential Nobel winners' do
       expect(presidential_prizes).to contain_exactly(
