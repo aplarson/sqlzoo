@@ -5,9 +5,9 @@
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: route 
+# Table name: route
 #
-#  num         :integer      not null, primary key
+#  num         :string       not null, primary key
 #  company     :string       not null, primary key
 #  pos         :integer      not null, primary key
 #  stop        :integer
@@ -30,7 +30,7 @@ def lrt_stops
   # Give the id and the name for the stops on the '4' 'LRT' service.
   execute(<<-SQL)
   SQL
-end  
+end
 
 def connecting_routes
   # The query shown gives the number of routes that visit either London Road
