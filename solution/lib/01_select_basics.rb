@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world 
+# Table name: world
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,7 +15,7 @@ def example_select
     SELECT
       population
     FROM
-      world 
+      world
     WHERE
       name = 'France'
   SQL
@@ -84,8 +84,9 @@ def starts_with_g
 end
 
 def just_the_right_size
-  # Show the country and the area for countries with an area between 200,000
-  # and 250,000. BETWEEN allows range checking - note that it is inclusive.
+  # Show the country and the area in 1000's of square kilometers for countries
+  # with an area between 200,000 and 250,000.
+  # BETWEEN allows range checking - note that it is inclusive.
   execute(<<-SQL)
     SELECT
       name, area/1000
