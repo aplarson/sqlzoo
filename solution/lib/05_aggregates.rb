@@ -86,7 +86,7 @@ def populous_country_counts
     FROM
       world
     WHERE
-      population > 10000000
+      population >= 10000000
     GROUP BY
       continent;
   SQL
