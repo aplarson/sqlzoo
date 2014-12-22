@@ -1,11 +1,11 @@
 # == Schema Information
 #
-# Table name: actor 
+# Table name: actor
 #
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: movie 
+# Table name: movie
 #
 #  id          :integer      not null, primary key
 #  title       :string
@@ -14,7 +14,7 @@
 #  votes       :integer
 #  director    :integer
 #
-# Table name: casting 
+# Table name: casting
 #
 #  movieid     :integer      not null, primary key
 #  actorid     :integer      not null, primary key
@@ -51,7 +51,7 @@ def ford_supporting_films
   SQL
 end
 
-def films_and_stars_from_sixty_two 
+def films_and_stars_from_sixty_two
   # List the title and leading star of every 1962 film.
   execute(<<-SQL)
   SQL
@@ -72,7 +72,7 @@ def andrews_films_and_leads
 end
 
 def prolific_actors
-  # Obtain a list in alphabetical order of actors who've had at least 15 
+  # Obtain a list in alphabetical order of actors who've had at least 15
   # starring roles.
   execute(<<-SQL)
   SQL
@@ -80,7 +80,7 @@ end
 
 def films_by_cast_size
   # List the films released in the year 1978 ordered by the number of actors
-  # in the cast.
+  # in the cast (descending), then by title (ascending).
   execute(<<-SQL)
   SQL
 end

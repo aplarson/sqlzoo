@@ -63,7 +63,7 @@ describe "JOIN exercises" do
     it "selects the year and number of movies of John Travolta's busy years" do
       expect(travoltas_busiest_years).to contain_exactly(
         ["1996", "2"],
-        ["1998", "2"] 
+        ["1998", "2"]
       )
     end
   end
@@ -101,16 +101,16 @@ describe "JOIN exercises" do
         ["Capricorn One", "11"],
         ["Foul Play", "11"],
         ["Heaven Can Wait", "11"],
+        ["Animal House", "9"],
+        ["Boys from Brazil, The", "9"],
+        ["Midnight Express", "9"],
         ["Superman", "9"],
         ["Watership Down", "9"],
-        ["Midnight Express", "9"],
-        ["Boys from Brazil, The", "9"],
-        ["Animal House", "9"],
-        ["Grease", "8"],
         ["Deer Hunter, The", "8"],
+        ["Grease", "8"],
         ["Halloween", "8"],
-        ["Coma", "7"],
         ["Attack of the Killer Tomatoes!", "7"],
+        ["Coma", "7"],
         ["Damien: Omen II", "7"],
         ["Days of Heaven", "6"],
         ["Up in Smoke", "6"],
