@@ -33,33 +33,7 @@ describe "self-JOIN exercises" do
   describe "connecting_routes" do
     it "shows the routes that connect London Road with Craiglockhart" do
       expect(connecting_routes).to contain_exactly(
-        ["LRT", "47", "1"],
-        ["LRT", "5", "1"],
-        ["LRT", "43", "1"],
-        ["LRT", "44", "1"],
-        ["LRT", "27", "1"],
-        ["LRT", "34", "1"],
-        ["LRT", "63", "1"],
-        ["LRT", "26A", "1"],
-        ["SMT", "113", "1"],
-        ["SMT", "124", "1"],
-        ["LRT", "20", "1"],
-        ["LRT", "42", "1"],
-        ["LRT", "87A", "1"],
-        ["SMT", "C55", "1"],
-        ["LRT", "15", "1"],
-        ["LRT", "35", "1"],
-        ["SMT", "66A", "1"],
-        ["LRT", "75", "1"],
-        ["LRT", "87", "1"],
-        ["SMT", "106", "1"],
-        ["LRT", "65", "1"],
-        ["LRT", "51", "1"],
-        ["LRT", "10", "1"],
-        ["LRT", "46A", "1"],
-        ["SMT", "C5", "1"],
         ["LRT", "45", "2"],
-        ["SMT", "66", "1"],
         ["LRT", "4", "2"]
       )
     end
