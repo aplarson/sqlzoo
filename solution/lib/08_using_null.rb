@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: teacher
+# Table name: teachers
 #
 #  id          :integer      not null, primary key
-#  dept        :integer
+#  dept_id     :integer
 #  name        :string
 #  phone       :integer
 #  mobile      :string
 #
-# Table name: dept
+# Table name: depts
 #
 #  id          :integer      not null, primary key
 #  name        :string       not null
@@ -19,11 +19,11 @@ def null_dept
   # List the teachers who have NULL for their department.
   execute(<<-SQL)
     SELECT
-      teacher.name
+      teachers.name
     FROM
-      teacher
+      teachers
     WHERE
-      teacher.dept IS NULL;
+      teachers.dept_id IS NULL;
   SQL
 end
 
@@ -32,11 +32,11 @@ def all_teachers_join
   # even if the department in NULL/nil.
   execute(<<-SQL)
     SELECT
-      teacher.name, dept.name
+      teachers.name, depts.name
     FROM
-      teacher
+      teachers
     LEFT OUTER JOIN
-      dept ON teacher.dept = dept.id;
+      depts ON teachers.dept_id = depts.id;
   SQL
 end
 
@@ -46,11 +46,11 @@ def all_depts_join
   # the FROM and JOIN tables.
   execute(<<-SQL)
     SELECT
-      teacher.name, dept.name
+      teachers.name, depts.name
     FROM
-      dept
+      depts
     LEFT OUTER JOIN
-      teacher ON dept.id = teacher.dept;
+      teachers ON depts.id = teachers.dept_id;
   SQL
 end
 
@@ -60,9 +60,9 @@ def teachers_and_mobiles
   # #number or '07986 444 2266'
   execute(<<-SQL)
     SELECT
-      teacher.name, COALESCE(teacher.mobile, '07986 444 2266')
+      teachers.name, COALESCE(teachers.mobile, '07986 444 2266')
     FROM
-      teacher;
+      teachers;
   SQL
 end
 
@@ -72,11 +72,11 @@ def teachers_and_depts
   # department.
   execute(<<-SQL)
     SELECT
-      teacher.name, COALESCE(dept.name, 'None')
+      teachers.name, COALESCE(depts.name, 'None')
     FROM
-      teacher
+      teachers
     LEFT OUTER JOIN
-      dept ON teacher.dept = dept.id;
+      depts ON teachers.dept_id = depts.id;
   SQL
 end
 
@@ -86,9 +86,9 @@ def num_teachers_and_mobiles
   # NB: COUNT only counts non-NULL values.
   execute(<<-SQL)
     SELECT
-      COUNT(teacher.name), COUNT(teacher.mobile)
+      COUNT(teachers.name), COUNT(teachers.mobile)
     FROM
-      teacher;
+      teachers;
   SQL
 end
 
@@ -98,13 +98,13 @@ def dept_staff_counts
   # Engineering department is listed.
   execute(<<-SQL)
     SELECT
-      dept.name, COUNT(teacher.id)
+      depts.name, COUNT(teachers.id)
     FROM
-      dept
+      depts
     LEFT OUTER JOIN
-      teacher ON dept.id = teacher.dept
+      teachers ON depts.id = teachers.dept_id
     GROUP BY
-      dept.name;
+      depts.name;
   SQL
 end
 
@@ -113,13 +113,13 @@ def teachers_and_divisions
   # the the teacher is in dept 1 or 2 and 'Art' otherwise.
   execute(<<-SQL)
     SELECT
-      teacher.name,
+      teachers.name,
       CASE
-        WHEN teacher.dept IN (1, 2) THEN 'Sci'
+        WHEN teachers.dept_id IN (1, 2) THEN 'Sci'
         ELSE 'Art'
       END AS dept_name
     FROM
-      teacher;
+      teachers;
   SQL
 end
 
@@ -129,12 +129,12 @@ def teachers_and_divisions_two
   # 'None' otherwise.
   execute(<<-SQL)
     SELECT
-      teacher.name,
+      teachers.name,
       CASE
-        WHEN teacher.dept IN (1, 2) THEN 'Sci'
-        WHEN teacher.dept = 3 THEN 'Art'
+        WHEN teachers.dept_id IN (1, 2) THEN 'Sci'
+        WHEN teachers.dept_id = 3 THEN 'Art'
         ELSE 'None'
       END AS dept_name
-    FROM teacher;
+    FROM teachers;
   SQL
 end

@@ -5,12 +5,12 @@
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: route
+# Table name: routes
 #
 #  num         :string       not null, primary key
 #  company     :string       not null, primary key
 #  pos         :integer      not null, primary key
-#  stop        :integer
+#  stop_id      :integer
 
 require_relative './sqlzoo.rb'
 
@@ -18,9 +18,9 @@ def num_stops
   # How many stops are in the database?
   execute(<<-SQL)
     SELECT
-      COUNT(DISTINCT(route.stop))
+      COUNT(DISTINCT(routes.stop_id))
     FROM
-      route;
+      routes;
   SQL
 end
 
@@ -40,14 +40,14 @@ def lrt_stops
   # Give the id and the name for the stops on the '4' 'LRT' service.
   execute(<<-SQL)
     SELECT
-      route.stop, stops.name
+      routes.stop_id, stops.name
     FROM
-      route
+      routes
     JOIN
-      stops ON route.stop = stops.id
+      stops ON routes.stop_id = stops.id
     WHERE
-      route.company = 'LRT'
-      AND route.num = '4';
+      routes.company = 'LRT'
+      AND routes.num = '4';
   SQL
 end
 
@@ -71,9 +71,9 @@ def connecting_routes
     SELECT
       company, num, COUNT(*)
     FROM
-      route
+      routes
     WHERE
-      stop=149 OR stop=53
+      stop_id = 149 OR stop_id = 53
     GROUP BY
       company, num
     HAVING
@@ -98,13 +98,13 @@ def cl_to_lr
   # shows the services from Craiglockhart to London Road.
   execute(<<-SQL)
     SELECT
-      a.company, a.num, a.stop, b.stop
+      a.company, a.num, a.stop_id, b.stop_id
     FROM
-      route a
+      routes a
     JOIN
-      route b ON (a.company = b.company AND a.num = b.num)
+      routes b ON (a.company = b.company AND a.num = b.num)
     WHERE
-      a.stop = 53 AND b.stop = 149
+      a.stop_id = 53 AND b.stop_id = 149
   SQL
 end
 
@@ -133,14 +133,14 @@ def cl_to_lr_by_name
     SELECT
       a.company, a.num, stopa.name, stopb.name
     FROM
-      route a
+      routes a
     JOIN
-      route b ON (a.company = b.company AND a.num = b.num)
+      routes b ON (a.company = b.company AND a.num = b.num)
     JOIN
       stops stopa
-    ON (a.stop = stopa.id)
+    ON (a.stop_id = stopa.id)
     JOIN
-      stops stopb ON (b.stop = stopb.id)
+      stops stopb ON (b.stop_id = stopb.id)
     WHERE
       stopa.name = 'Craiglockhart' AND stopb.name = 'London Road'
   SQL
@@ -156,9 +156,9 @@ def haymarket_and_leith
         SELECT
           r1.company, r1.num
         FROM
-          route r1
+          routes r1
         JOIN
-          stops s1 ON r1.stop = s1.id
+          stops s1 ON r1.stop_id = s1.id
         WHERE
           s1.name = 'Haymarket'
       ) AS r1
@@ -166,9 +166,9 @@ def haymarket_and_leith
         SELECT
           r2.company, r2.num, s2.name
         FROM
-          route r2
+          routes r2
         JOIN
-          stops s2 ON r2.stop = s2.id
+          stops s2 ON r2.stop_id = s2.id
         WHERE
           s2.name = 'Leith'
       ) AS r2 ON (r1.company = r2.company AND r1.num = r2.num)
@@ -185,9 +185,9 @@ def craiglockhart_and_tollcross
         SELECT
           r1.company, r1.num
         FROM
-          route r1
+          routes r1
         JOIN
-          stops s1 ON r1.stop = s1.id
+          stops s1 ON r1.stop_id = s1.id
         WHERE
           s1.name = 'Craiglockhart'
       ) AS r1
@@ -195,9 +195,9 @@ def craiglockhart_and_tollcross
         SELECT
           r2.company, r2.num, s2.name
         FROM
-          route r2
+          routes r2
         JOIN
-          stops s2 ON r2.stop = s2.id
+          stops s2 ON r2.stop_id = s2.id
         WHERE s2.name = 'Tollcross'
       ) AS r2 ON (r1.company = r2.company AND r1.num = r2.num);
   SQL
@@ -216,9 +216,9 @@ def start_at_craiglockhart
         SELECT
           *
         FROM
-          route start_routes
+          routes start_routes
         WHERE
-          start_routes.stop = (
+          start_routes.stop_id = (
             SELECT
               stops.id
             FROM
@@ -228,11 +228,11 @@ def start_at_craiglockhart
           )
       ) AS start_routes
     JOIN
-      route AS end_routes ON
+      routes AS end_routes ON
         (start_routes.num = end_routes.num
         AND start_routes.company = end_routes.company)
     JOIN
-      stops AS end_route_stops ON end_routes.stop = end_route_stops.id
+      stops AS end_route_stops ON end_routes.stop_id = end_route_stops.id
   SQL
 end
 
@@ -244,28 +244,28 @@ def craiglockhart_to_sighthill
     SELECT DISTINCT
       start.num, start.company, transfer.name, finish.num, finish.company
     FROM
-      route start
+      routes start
     JOIN
-      route AS to_transfer ON
+      routes AS to_transfer ON
         (start.company = to_transfer.company AND start.num = to_transfer.num)
     JOIN
       stops AS transfer ON
-        (to_transfer.stop = transfer.id)
+        (to_transfer.stop_id = transfer.id)
     JOIN
-      route AS from_transfer ON
-        (transfer.id = from_transfer.stop)
+      routes AS from_transfer ON
+        (transfer.id = from_transfer.stop_id)
     JOIN
-      route AS finish ON
+      routes AS finish ON
         (from_transfer.company = finish.company AND from_transfer.num = finish.num)
     WHERE
-      start.stop = (
+      start.stop_id = (
         SELECT
           id
         FROM
           stops
         WHERE
           name = 'Craiglockhart'
-      ) AND finish.stop = (
+      ) AND finish.stop_id = (
         SELECT
           id
         FROM

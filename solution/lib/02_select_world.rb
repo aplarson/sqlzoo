@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world 
+# Table name: countries
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,7 +15,7 @@ def example_select
     SELECT
       population
     FROM
-      world 
+      countries
     WHERE
       name = 'France'
   SQL
@@ -28,7 +28,7 @@ def large_countries
     SELECT
       name
     FROM
-      world
+      countries
     WHERE
       population > 200000000;
   SQL
@@ -41,7 +41,7 @@ def high_population_gdps
     SELECT
       name, gdp / population AS GDP
     FROM
-      world
+      countries
     WHERE
       population > 200000000;
   SQL
@@ -55,7 +55,7 @@ def population_in_millions
     SELECT
       name, population/1000000 AS population_millions
     FROM
-      world
+      countries
     WHERE
       continent = 'South America';
   SQL
@@ -67,7 +67,7 @@ def name_and_population
     SELECT
       name, population
     FROM
-      world
+      countries
     WHERE
       name IN ('France', 'Germany', 'Italy');
   SQL
@@ -79,7 +79,7 @@ def united_we_stand
     SELECT
       name
     FROM
-      world
+      countries
     WHERE
       name LIKE '%United%';
   SQL

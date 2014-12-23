@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world
+# Table name: countries
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,13 +15,13 @@ def example_select_with_subquery
     SELECT
       name
     FROM
-      world
+      countries
     WHERE
       population > (
         SELECT
           population
         FROM
-          world
+          countries
         WHERE
           name='Romania'
         )
@@ -32,17 +32,17 @@ def larger_than_russia
   # List each country name where the population is larger than 'Russia'.
   execute(<<-SQL)
     SELECT
-      w1.name
+      c1.name
     FROM
-      world w1
+      countries c1
     WHERE
-      w1.population > (
+      c1.population > (
         SELECT
-          w2.population
+          c2.population
         FROM
-          world w2
+          countries c2
         WHERE
-          w2.name = 'Russia'
+          c2.name = 'Russia'
       );
   SQL
 end
@@ -52,18 +52,18 @@ def richer_than_england
   # 'United Kingdom'.
   execute(<<-SQL)
     SELECT
-      world.name
+      countries.name
     FROM
-      world
+      countries
     WHERE
-      (world.continent = 'Europe'
-        AND (world.gdp / world.population) > (
+      (countries.continent = 'Europe'
+        AND (countries.gdp / countries.population) > (
           SELECT
-            w2.gdp / w2.population
+            c2.gdp / c2.population
           FROM
-            world w2
+            countries c2
           WHERE
-            w2.name = 'United Kingdom'
+            c2.name = 'United Kingdom'
         ));
   SQL
 end
@@ -73,17 +73,17 @@ def neighbors_of_b_countries
   # 'Belize', 'Belgium'.
   execute(<<-SQL)
     SELECT
-      world.name, world.continent
+      countries.name, countries.continent
     FROM
-      world
+      countries
     WHERE
-      world.continent IN (
+      countries.continent IN (
         SELECT
-          w2.continent
+          c2.continent
         FROM
-          world w2
+          countries c2
         WHERE
-          w2.name IN ('Belize', 'Belgium')
+          c2.name IN ('Belize', 'Belgium')
       );
   SQL
 end
@@ -93,24 +93,24 @@ def population_constraint
   # Poland? Show the name and the population.
   execute(<<-SQL)
     SELECT
-      world.name, world.population
+      countries.name, countries.population
     FROM
-      world
+      countries
     WHERE
-      (world.population > (
+      (countries.population > (
           SELECT
-            w2.population
+            c2.population
           FROM
-            world w2
+            countries c2
           WHERE
-            w2.name = 'Canada'
-        ) AND world.population < (
+            c2.name = 'Canada'
+        ) AND countries.population < (
           SELECT
-            w2.population
+            c2.population
           FROM
-            world w2
+            countries c2
           WHERE
-            w2.name = 'Poland'
+            c2.name = 'Poland'
         ));
   SQL
 end
@@ -128,17 +128,17 @@ def highest_gdp
   # name only. Some countries may have NULL gdp values)
   execute(<<-SQL)
     SELECT
-      world.name
+      countries.name
     FROM
-      world
+      countries
     WHERE
-      world.gdp > (
+      countries.gdp > (
         SELECT
-          MAX(w2.gdp)
+          MAX(c2.gdp)
         FROM
-          world w2
+          countries c2
         WHERE
-          w2.continent = 'Europe'
+          c2.continent = 'Europe'
       );
   SQL
 end
@@ -152,17 +152,17 @@ def largest_in_continent
   # name, and area.
   execute(<<-SQL)
     SELECT
-      w1.continent, w1.name, w1.area
+      c1.continent, c1.name, c1.area
     FROM
-      world w1
+      countries c1
     WHERE
-      w1.area = (
+      c1.area = (
         SELECT
-          MAX(w2.area)
+          MAX(c2.area)
         FROM
-           world w2
+           countries c2
         WHERE
-          w1.continent = w2.continent
+          c1.continent = c2.continent
       );
   SQL
 end
@@ -175,17 +175,17 @@ def sparse_continents
   # less than 25,000,000. Show name, continent and population.
   execute(<<-SQL)
     SELECT
-      w1.name, w1.continent, w1.population
+      c1.name, c1.continent, c1.population
     FROM
-      world w1
+      countries c1
     WHERE
-      w1.continent NOT IN (
+      c1.continent NOT IN (
         SELECT
-          w2.continent
+          c2.continent
         FROM
-          world w2
+          countries c2
         WHERE
-          w2.population >= 25000000
+          c2.population >= 25000000
       );
   SQL
 end
@@ -195,18 +195,18 @@ def large_neighbors
   # neighbors (in the same continent). Give the countries and continents.
   execute(<<-SQL)
     SELECT
-      w1.name, w1.continent
+      c1.name, c1.continent
     FROM
-      world w1
+      countries c1
     WHERE
       population > 3 * (
         SELECT
-          MAX(w2.population)
+          MAX(c2.population)
         FROM
-          world w2
+          countries c2
         WHERE
-          w1.name != w2.name -- got me!
-            AND w1.continent = w2.continent
+          c1.name != c2.name -- got me!
+            AND c1.continent = c2.continent
       )
   SQL
 end

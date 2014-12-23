@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: nobel 
+# Table name: nobels
 #
 #  yr          :integer
 #  subject     :string
@@ -13,7 +13,7 @@ def example_select
     SELECT
       yr, subject, winner
     FROM
-      nobel 
+      nobels
     WHERE
       yr = 1960
   SQL
@@ -25,7 +25,7 @@ def prizes_from_1950
     SELECT
       yr, subject, winner
     FROM
-      nobel
+      nobels
     WHERE
       yr = 1950;
   SQL
@@ -37,7 +37,7 @@ def literature_1962
     SELECT
       winner
     FROM
-      nobel
+      nobels
     WHERE
       (yr = 1962 AND subject = 'Literature');
   SQL
@@ -49,7 +49,7 @@ def einstein_prize
     SELECT
       yr, subject
     FROM
-      nobel
+      nobels
     WHERE
       winner = 'Albert Einstein';
   SQL
@@ -61,7 +61,7 @@ def millennial_peace_prizes
     SELECT
       winner
     FROM
-      nobel
+      nobels
     WHERE
       (subject = 'Peace' AND yr >= 2000);
   SQL
@@ -74,7 +74,7 @@ def eighties_literature
     SELECT
       yr, subject, winner
     FROM
-      nobel
+      nobels
     WHERE
       (subject = 'Literature' AND (yr BETWEEN 1980 AND 1989));
   SQL
@@ -87,7 +87,7 @@ def presidential_prizes
     SELECT
       yr, subject, winner
     FROM
-      nobel
+      nobels
     WHERE
       winner IN
         ('Theodore Roosevelt', 'Woodrow Wilson', 'Jed Bartlet', 'Jimmy Carter');
@@ -100,7 +100,7 @@ def nobel_johns
     SELECT
       winner
     FROM
-      nobel
+      nobels
     WHERE
       winner LIKE 'John%';
   SQL
@@ -114,13 +114,13 @@ def physics_no_chemistry
     SELECT DISTINCT
       yr
     FROM
-      nobel
+      nobels
     WHERE
       (subject = 'Physics' AND yr NOT IN (
         SELECT
           yr
         FROM
-          nobel
+          nobels
         WHERE
           subject = 'Chemistry'
       ))

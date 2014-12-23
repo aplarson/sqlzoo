@@ -1,23 +1,23 @@
 # == Schema Information
 #
-# Table name: actor 
+# Table name: actors
 #
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: movie 
+# Table name: movies
 #
 #  id          :integer      not null, primary key
 #  title       :string
 #  yr          :integer
 #  score       :float
 #  votes       :integer
-#  director    :integer
+#  director_id    :integer
 #
-# Table name: casting 
+# Table name: castings
 #
-#  movieid     :integer      not null, primary key
-#  actorid     :integer      not null, primary key
+#  movie_id     :integer      not null, primary key
+#  actor_id     :integer      not null, primary key
 #  ord         :integer
 
 require_relative './sqlzoo.rb'
@@ -27,7 +27,7 @@ def example_query
     SELECT
       *
     FROM
-      movie
+      movies
     WHERE
       title = 'Doctor No'
   SQL
@@ -39,7 +39,7 @@ def films_from_sixty_two
     SELECT
       id, title
     FROM
-      movie
+      movies
     WHERE
       yr = 1962;
   SQL
@@ -51,7 +51,7 @@ def year_of_kane
     SELECT
       yr
     FROM
-      movie
+      movies
     WHERE
       title = 'Citizen Kane';
   SQL
@@ -65,7 +65,7 @@ def trek_films
     SELECT
       id, title, yr
     FROM
-      movie
+      movies
     WHERE
       title LIKE '%Star Trek%'
     ORDER BY
@@ -79,7 +79,7 @@ def films_by_id
     SELECT
       title
     FROM
-      movie
+      movies
     WHERE
       id IN (1119, 1595, 1768);
   SQL
@@ -91,7 +91,7 @@ def glenn_close_id
     SELECT
       id
     FROM
-      actor
+      actors
     WHERE
       name = 'Glenn Close';
   SQL
@@ -103,7 +103,7 @@ def casablanca_id
     SELECT
       id
     FROM
-      movie
+      movies
     WHERE
       title = 'Casablanca';
   SQL
@@ -114,15 +114,15 @@ def casablanca_cast
   # in the previous question.
   execute(<<-SQL)
     SELECT
-      actor.name
+      actors.name
     FROM
-      actor
+      actors
     JOIN
-      casting ON casting.actorid = actor.id
+      castings ON castings.actor_id = actors.id
     JOIN
-      movie ON movie.id = casting.movieid
+      movies ON movies.id = castings.movie_id
     WHERE
-      movie.title = 'Casablanca';
+      movies.title = 'Casablanca';
   SQL
 end
 
@@ -130,15 +130,14 @@ def alien_cast
   # Obtain the cast list for the film 'Alien'
   execute(<<-SQL)
     SELECT
-      actor.name
+      actors.name
     FROM
-      actor
+      actors
     JOIN
-      casting ON casting.actorid = actor.id
+      castings ON castings.actor_id = actors.id
     JOIN
-      movie ON movie.id = casting.movieid
+      movies ON movies.id = castings.movie_id
     WHERE
-      movie.title = 'Alien';
+      movies.title = 'Alien';
   SQL
 end
-

@@ -1,23 +1,23 @@
 # == Schema Information
 #
-# Table name: actor
+# Table name: actors
 #
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: movie
+# Table name: movies
 #
 #  id          :integer      not null, primary key
 #  title       :string
 #  yr          :integer
 #  score       :float
 #  votes       :integer
-#  director    :integer
+#  director_id    :integer
 #
-# Table name: casting
+# Table name: castings
 #
-#  movieid     :integer      not null, primary key
-#  actorid     :integer      not null, primary key
+#  movie_id     :integer      not null, primary key
+#  actor_id     :integer      not null, primary key
 #  ord         :integer
 
 require_relative './sqlzoo.rb'
@@ -27,13 +27,13 @@ def example_join
     SELECT
       *
     FROM
-      movie
+      movies
     JOIN
-      casting ON movie.id = casting.movieid
+      castings ON movies.id = castings.movie_id
     JOIN
-      actor ON casting.actorid = actor.id
+      actors ON castings.actor_id = actors.id
     WHERE
-      actor.name = 'Sean Connery'
+      actors.name = 'Sean Connery'
   SQL
 end
 
@@ -41,15 +41,15 @@ def ford_films
   # List the films in which 'Harrison Ford' has appeared.
   execute(<<-SQL)
     SELECT
-      movie.title
+      movies.title
     FROM
-      movie
+      movies
     JOIN
-      casting ON casting.movieid = movie.id
+      castings ON castings.movie_id = movies.id
     JOIN
-      actor ON actor.id = casting.actorid
+      actors ON actors.id = castings.actor_id
     WHERE
-      actor.name = 'Harrison Ford';
+      actors.name = 'Harrison Ford';
   SQL
 end
 
@@ -59,15 +59,15 @@ def ford_supporting_films
   # ord=1 then this actor is in the starring role]
   execute(<<-SQL)
     SELECT
-      movie.title
+      movies.title
     FROM
-      movie
+      movies
     JOIN
-      casting ON casting.movieid = movie.id
+      castings ON castings.movie_id = movies.id
     JOIN
-      actor ON actor.id = casting.actorid
+      actors ON actors.id = castings.actor_id
     WHERE
-      (actor.name = 'Harrison Ford' AND casting.ord != 1);
+      (actors.name = 'Harrison Ford' AND castings.ord != 1);
   SQL
 end
 
@@ -75,15 +75,15 @@ def films_and_stars_from_sixty_two
   # List the title and leading star of every 1962 film.
   execute(<<-SQL)
     SELECT
-      movie.title, actor.name
+      movies.title, actors.name
     FROM
-      movie
+      movies
     JOIN
-      casting ON casting.movieid = movie.id
+      castings ON castings.movie_id = movies.id
     JOIN
-      actor ON actor.id = casting.actorid
+      actors ON actors.id = castings.actor_id
     WHERE
-      (movie.yr = 1962 AND casting.ord = 1);
+      (movies.yr = 1962 AND castings.ord = 1);
   SQL
 end
 
@@ -92,17 +92,17 @@ def travoltas_busiest_years
   # number of movies he made for any year in which he made at least 2 movies.
   execute(<<-SQL)
     SELECT
-      movie.yr, COUNT(*)
+      movies.yr, COUNT(*)
     FROM
-      movie
+      movies
     JOIN
-      casting ON casting.movieid = movie.id
+      castings ON castings.movie_id = movies.id
     JOIN
-      actor ON actor.id = casting.actorid
+      actors ON actors.id = castings.actor_id
     WHERE
-      actor.name = 'John Travolta'
+      actors.name = 'John Travolta'
     GROUP BY
-      movie.yr
+      movies.yr
     HAVING
       COUNT(*) >= 2;
   SQL
@@ -116,26 +116,26 @@ def andrews_films_and_leads
       DISTINCT m1.title, a1.name
     FROM (
         SELECT
-          movie.*
+          movies.*
         FROM
-          movie
+          movies
         JOIN
-          casting ON casting.movieid = movie.id
+          castings ON castings.movie_id = movies.id
         JOIN
-          actor ON actor.id = casting.actorid
+          actors ON actors.id = castings.actor_id
         WHERE
-          actor.name = 'Julie Andrews'
+          actors.name = 'Julie Andrews'
       ) AS m1
     JOIN (
         SELECT
-          actor.*, casting.movieid AS movieid
+          actors.*, castings.movie_id AS movie_id
         FROM
-          actor
+          actors
         JOIN
-          casting ON casting.actorid = actor.id
+          castings ON castings.actor_id = actors.id
         WHERE
-          casting.ord = 1
-      ) AS a1 ON m1.id = a1.movieid
+          castings.ord = 1
+      ) AS a1 ON m1.id = a1.movie_id
     ORDER BY
       m1.title;
   SQL
@@ -146,21 +146,21 @@ def prolific_actors
   # starring roles.
   execute(<<-SQL)
     SELECT
-      actor.name
+      actors.name
     FROM
-      actor
+      actors
     JOIN
-      casting ON casting.actorid = actor.id
+      castings ON castings.actor_id = actors.id
     JOIN
-      movie ON movie.id = casting.movieid
+      movies ON movies.id = castings.movie_id
     WHERE
-      casting.ord = 1
+      castings.ord = 1
     GROUP BY
-      actor.name
+      actors.name
     HAVING
       COUNT(*) >= 15
     ORDER BY
-      actor.name;
+      actors.name;
   SQL
 end
 
@@ -169,17 +169,17 @@ def films_by_cast_size
   # in the cast (descending), then by title (ascending).
   execute(<<-SQL)
     SELECT
-      movie.title, COUNT(DISTINCT casting.actorid) AS actor_count
+      movies.title, COUNT(DISTINCT castings.actor_id) AS actor_count
     FROM
-      movie
+      movies
     JOIN
-      casting ON casting.movieid = movie.id
+      castings ON castings.movie_id = movies.id
     WHERE
-      movie.yr = 1978
+      movies.yr = 1978
     GROUP BY
-      movie.id
+      movies.id
     ORDER BY
-      COUNT(*) DESC, movie.title ASC;
+      COUNT(*) DESC, movies.title ASC;
   SQL
 end
 
@@ -190,25 +190,25 @@ def colleagues_of_garfunkel
       a1.name
     FROM (
         SELECT
-          movie.*
+          movies.*
         FROM
-          movie
+          movies
         JOIN
-          casting ON casting.movieid = movie.id
+          castings ON castings.movie_id = movies.id
         JOIN
-          actor ON actor.id = casting.actorid
+          actors ON actors.id = castings.actor_id
         WHERE
-          actor.name = 'Art Garfunkel'
+          actors.name = 'Art Garfunkel'
       ) AS m1
     JOIN (
         SELECT
-          actor.*, casting.movieid
+          actors.*, castings.movie_id
         FROM
-          actor
+          actors
         JOIN
-          casting ON casting.actorid = actor.id
+          castings ON castings.actor_id = actors.id
         WHERE
-          actor.name != 'Art Garfunkel'
-      ) AS a1 ON m1.id = a1.movieid;
+          actors.name != 'Art Garfunkel'
+      ) AS a1 ON m1.id = a1.movie_id;
   SQL
 end

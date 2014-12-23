@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world
+# Table name: countries
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,7 +15,7 @@ def example_select
     SELECT
       population
     FROM
-      world
+      countries
     WHERE
       name = 'France'
   SQL
@@ -26,7 +26,7 @@ def select_population_of_germany
     SELECT
       population
     FROM
-      world
+      countries
     WHERE
       name = 'Germany';
   SQL
@@ -39,7 +39,7 @@ def per_capita_gdp
     SELECT
       name, gdp/population AS gdp
     FROM
-      world
+      countries
     WHERE
       area > 5000000;
   SQL
@@ -52,7 +52,7 @@ def small_and_wealthy
     SELECT
       name, continent
     FROM
-      world
+      countries
     WHERE
       area < 2000 AND gdp > 5000000000;
   SQL
@@ -65,7 +65,7 @@ def scandinavia
     SELECT
       name, population
     FROM
-      world
+      countries
     WHERE
       name IN ('Denmark', 'Finland', 'Norway', 'Sweden');
   SQL
@@ -77,7 +77,7 @@ def starts_with_g
     SELECT
       name
     FROM
-      world
+      countries
     WHERE
       name LIKE 'G%';
   SQL
@@ -91,7 +91,7 @@ def just_the_right_size
     SELECT
       name, area/1000
     FROM
-      world
+      countries
     WHERE
       area BETWEEN 200000 AND 250000;
   SQL

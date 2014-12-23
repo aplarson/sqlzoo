@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world
+# Table name: countries
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,7 +15,7 @@ def example_sum
     SELECT
       SUM(population)
     FROM
-      world
+      countries
   SQL
 end
 
@@ -25,7 +25,7 @@ def continents
     SELECT
       DISTINCT(continent)
     FROM
-      world;
+      countries;
   SQL
 end
 
@@ -35,7 +35,7 @@ def africa_gdp
     SELECT
       SUM(gdp)
     FROM
-      world
+      countries
     WHERE
       continent = 'Africa';
   SQL
@@ -47,7 +47,7 @@ def area_count
     SELECT
       COUNT(*)
     FROM
-      world
+      countries
     WHERE
       area > 1000000;
   SQL
@@ -59,7 +59,7 @@ def group_population
     SELECT
       SUM(population)
     FROM
-      world
+      countries
     WHERE
       name IN ('France', 'Germany', 'Spain');
   SQL
@@ -71,7 +71,7 @@ def country_counts
     SELECT
       continent, COUNT(*)
     FROM
-      world
+      countries
     GROUP BY
       continent;
   SQL
@@ -84,7 +84,7 @@ def populous_country_counts
     SELECT
       continent, COUNT(*)
     FROM
-      world
+      countries
     WHERE
       population >= 10000000
     GROUP BY
@@ -98,7 +98,7 @@ def populous_continents
     SELECT
       continent
     FROM
-      world
+      countries
     GROUP BY
       continent
     HAVING
