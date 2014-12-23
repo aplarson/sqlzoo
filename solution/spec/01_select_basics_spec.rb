@@ -23,7 +23,7 @@ describe 'SELECT basics' do
   end
 
   describe 'small_and_wealthy' do
-    it 'selects countries with an area under 2,000 and a GDP over 5 million' do
+    it 'selects countries with an area under 2,000 and a GDP over 5 billion' do
       expect(small_and_wealthy).to contain_exactly(
         ["Bahrain", "Middle East"],
         ["Singapore", "Asia-Pacific"]
