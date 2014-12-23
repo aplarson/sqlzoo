@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world
+# Table name: countries
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,7 +15,7 @@ def example_select
     SELECT
       population
     FROM
-      world
+      countries
     WHERE
       name = 'France'
   SQL

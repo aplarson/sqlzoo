@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: world 
+# Table name: countries 
 #
 #  name        :string       not null, primary key
 #  continent   :string
@@ -15,13 +15,13 @@ def example_select_with_subquery
     SELECT
       name
     FROM
-      world
+      countries
     WHERE
       population > (
         SELECT
           population
         FROM
-          world
+          countries
         WHERE
           name='Romania'
         )

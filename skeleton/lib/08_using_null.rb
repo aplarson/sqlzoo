@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: teacher
+# Table name: teachers
 #
 #  id          :integer      not null, primary key
-#  dept        :integer
+#  dept_id     :integer
 #  name        :string
 #  phone       :integer
 #  mobile      :string
 #
-# Table name: dept
+# Table name: depts
 #
 #  id          :integer      not null, primary key
 #  name        :string       not null

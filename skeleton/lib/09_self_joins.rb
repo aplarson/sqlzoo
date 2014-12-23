@@ -5,12 +5,12 @@
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: route
+# Table name: routes
 #
 #  num         :string       not null, primary key
 #  company     :string       not null, primary key
 #  pos         :integer      not null, primary key
-#  stop        :integer
+#  stop_id     :integer
 
 require_relative './sqlzoo.rb'
 
@@ -58,13 +58,13 @@ def cl_to_lr
   # SELECT
   #   a.company, a.num, a.stop, b.stop
   # FROM
-  #   route a
+  #   routes a
   # JOIN
-  #   route b ON (a.company = b.company AND a.num = b.num)
+  #   routes b ON (a.company = b.company AND a.num = b.num)
   # WHERE
-  #   a.stop = 53
+  #   a.stop_id = 53
   #
-  # Observe that b.stop gives all the places # you can get to from
+  # Observe that b.stop_id gives all the places # you can get to from
   # Craiglockhart, without changing routes. Change the # query so that it
   # shows the services from Craiglockhart to London Road.
   execute(<<-SQL)
@@ -77,13 +77,13 @@ def cl_to_lr_by_name
   # SELECT
   #   a.company, a.num, stopa.name, stopb.name
   # FROM
-  #   route a
+  #   routes a
   # JOIN
-  #   route b ON (a.company = b.company AND a.num = b.num)
+  #   routes b ON (a.company = b.company AND a.num = b.num)
   # JOIN
-  #   stops stopa ON (a.stop = stopa.id)
+  #   stops stopa ON (a.stop_id = stopa.id)
   # JOIN
-  #   stops stopb ON (b.stop = stopb.id)
+  #   stops stopb ON (b.stop_id = stopb.id)
   # WHERE
   #   stopa.name = 'Craiglockhart'
   #

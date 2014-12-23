@@ -1,23 +1,23 @@
 # == Schema Information
 #
-# Table name: actor
+# Table name: actors
 #
 #  id          :integer      not null, primary key
 #  name        :string
 #
-# Table name: movie
+# Table name: movies
 #
 #  id          :integer      not null, primary key
 #  title       :string
 #  yr          :integer
 #  score       :float
 #  votes       :integer
-#  director    :integer
+#  director_id :integer
 #
-# Table name: casting
+# Table name: castings
 #
-#  movieid     :integer      not null, primary key
-#  actorid     :integer      not null, primary key
+#  movie_id    :integer      not null, primary key
+#  actor_id    :integer      not null, primary key
 #  ord         :integer
 
 require_relative './sqlzoo.rb'
@@ -27,13 +27,13 @@ def example_join
     SELECT
       *
     FROM
-      movie
+      movies
     JOIN
-      casting ON movie.id = casting.movieid
+      castings ON movies.id = castings.movie_id
     JOIN
-      actor ON casting.actorid = actor.id
+      actors ON castings.actor_id = actors.id
     WHERE
-      actor.name = 'Sean Connery'
+      actors.name = 'Sean Connery'
   SQL
 end
 
