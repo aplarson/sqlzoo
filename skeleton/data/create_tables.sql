@@ -10,14 +10,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -29,42 +29,42 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
-CREATE TABLE actor (
+CREATE TABLE actors (
     id integer NOT NULL,
     name character varying
 );
 
-CREATE TABLE casting (
-    movieid integer NOT NULL,
-    actorid integer NOT NULL,
+CREATE TABLE castings (
+    movie_id integer NOT NULL,
+    actor_id integer NOT NULL,
     ord integer
 );
 
-CREATE TABLE dept (
+CREATE TABLE depts (
     id integer NOT NULL,
     name character varying NOT NULL
 );
 
-CREATE TABLE movie (
+CREATE TABLE movies (
     id integer NOT NULL,
     title character varying,
     yr integer,
     score double precision,
     votes integer,
-    director integer
+    director_id integer
 );
 
-CREATE TABLE nobel (
+CREATE TABLE nobels (
     yr integer,
     subject character varying,
     winner character varying
 );
 
-CREATE TABLE route (
+CREATE TABLE routes (
     num character varying NOT NULL,
     company character varying NOT NULL,
     pos integer NOT NULL,
-    stop integer
+    stop_id integer
 );
 
 
@@ -73,15 +73,15 @@ CREATE TABLE stops (
     name character varying
 );
 
-CREATE TABLE teacher (
+CREATE TABLE teachers (
     id integer NOT NULL,
-    dept integer,
+    dept_id integer,
     name character varying,
     phone integer,
     mobile character varying
 );
 
-CREATE TABLE world (
+CREATE TABLE countries (
     name character varying NOT NULL,
     continent character varying,
     area integer,
@@ -89,7 +89,7 @@ CREATE TABLE world (
     gdp bigint
 );
 
-COPY actor (id, name) FROM stdin;
+COPY actors (id, name) FROM stdin;
 1	Woody Allen
 2	Clint Eastwood
 3	Robert De Niro
@@ -6037,7 +6037,7 @@ COPY actor (id, name) FROM stdin;
 5945	Gwen Verdon
 \.
 
-COPY casting (movieid, actorid, ord) FROM stdin;
+COPY castings (movie_id, actor_id, ord) FROM stdin;
 972	588	1
 849	588	2
 1575	588	3
@@ -21753,13 +21753,13 @@ COPY casting (movieid, actorid, ord) FROM stdin;
 542	5945	9
 \.
 
-COPY dept (id, name) FROM stdin;
+COPY depts (id, name) FROM stdin;
 1	Computing
 2	Design
 3	Engineering
 \.
 
-COPY movie (id, title, yr, score, votes, director) FROM stdin;
+COPY movies (id, title, yr, score, votes, director_id) FROM stdin;
 1	Star Wars	1977	8.80000000000000071	53567	360
 2	Shawshank Redemption, The	1994	9	44974	1040
 3	Pulp Fiction	1994	8.59999999999999964	43993	444
@@ -23607,7 +23607,7 @@ COPY movie (id, title, yr, score, votes, director) FROM stdin;
 1845	Hollywood Knights, The	1980	5.5	721	2016
 \.
 
-COPY nobel (yr, subject, winner) FROM stdin;
+COPY nobels (yr, subject, winner) FROM stdin;
 2008	Chemistry	Martin Chalfie
 2008	Chemistry	Osamu Shimomura
 2008	Chemistry	Roger Y. Tsien
@@ -24426,7 +24426,7 @@ COPY nobel (yr, subject, winner) FROM stdin;
 1901	Physics	Wilhelm Conrad RÃ¶ntgen
 \.
 
-COPY route (num, company, pos, stop) FROM stdin;
+COPY routes (num, company, pos, stop_id) FROM stdin;
 1	LRT	1	137
 1	LRT	2	99
 1	LRT	3	59
@@ -25852,7 +25852,7 @@ COPY stops (id, name) FROM stdin;
 250	Winchburgh
 \.
 
-COPY teacher (id, dept, name, phone, mobile) FROM stdin;
+COPY teachers (id, dept_id, name, phone, mobile) FROM stdin;
 101	1	Shrivell	2753	07966 555 1234
 102	1	Throd	2754	07122 555 1920
 103	1	Splint	2293	\N
@@ -25861,7 +25861,7 @@ COPY teacher (id, dept, name, phone, mobile) FROM stdin;
 106	\N	Deadyawn	3345	\N
 \.
 
-COPY world (name, continent, area, population, gdp) FROM stdin;
+COPY countries (name, continent, area, population, gdp) FROM stdin;
 Afghanistan	South Asia	652225	26000000	\N
 Albania	Europe	28728	3200000	6656000000
 Algeria	Middle East	2400000	32900000	75012000000
@@ -26057,56 +26057,56 @@ Zambia	Africa	752614	11000000	4950000000
 Zimbabwe	Africa	390759	12900000	6192000000
 \.
 
-ALTER TABLE ONLY actor
+ALTER TABLE ONLY actors
     ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY casting
-    ADD CONSTRAINT casting_pkey PRIMARY KEY (movieid, actorid);
+ALTER TABLE ONLY castings
+    ADD CONSTRAINT casting_pkey PRIMARY KEY (movie_id, actor_id);
 
-ALTER TABLE ONLY dept
+ALTER TABLE ONLY depts
     ADD CONSTRAINT dept_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY movie
+ALTER TABLE ONLY movies
     ADD CONSTRAINT movie_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY route
+ALTER TABLE ONLY routes
     ADD CONSTRAINT route_pkey PRIMARY KEY (num, company, pos);
 
 ALTER TABLE ONLY stops
     ADD CONSTRAINT stops_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY teacher
+ALTER TABLE ONLY teachers
     ADD CONSTRAINT teacher_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY world
-    ADD CONSTRAINT world_pkey PRIMARY KEY (name);
+ALTER TABLE ONLY countries
+    ADD CONSTRAINT country_pkey PRIMARY KEY (name);
 
-CREATE INDEX actor_name ON actor USING btree (name);
+CREATE INDEX actor_name ON actors USING btree (name);
 
-CREATE INDEX casting_actor ON casting USING btree (actorid);
+CREATE INDEX casting_actor ON castings USING btree (actor_id);
 
-CREATE INDEX casting_movie ON casting USING btree (movieid);
+CREATE INDEX casting_movie ON castings USING btree (movie_id);
 
-CREATE INDEX casting_ord ON casting USING btree (ord);
+CREATE INDEX casting_ord ON castings USING btree (ord);
 
-CREATE INDEX movie_title ON movie USING btree (title);
+CREATE INDEX movie_title ON movies USING btree (title);
 
-CREATE INDEX teacher_dept ON teacher USING btree (dept);
+CREATE INDEX teacher_dept ON teachers USING btree (dept_id);
 
-ALTER TABLE ONLY casting
-    ADD CONSTRAINT casting_actorid_fkey FOREIGN KEY (actorid) REFERENCES actor(id);
+ALTER TABLE ONLY castings
+    ADD CONSTRAINT casting_actorid_fkey FOREIGN KEY (actor_id) REFERENCES actors(id);
 
-ALTER TABLE ONLY casting
-    ADD CONSTRAINT casting_movieid_fkey FOREIGN KEY (movieid) REFERENCES movie(id);
+ALTER TABLE ONLY castings
+    ADD CONSTRAINT casting_movieid_fkey FOREIGN KEY (movie_id) REFERENCES movies(id);
 
-ALTER TABLE ONLY movie
-    ADD CONSTRAINT movie_director_fkey FOREIGN KEY (director) REFERENCES actor(id);
+ALTER TABLE ONLY movies
+    ADD CONSTRAINT movie_director_fkey FOREIGN KEY (director_id) REFERENCES actors(id);
 
-ALTER TABLE ONLY route
-    ADD CONSTRAINT route_stop_fkey FOREIGN KEY (stop) REFERENCES stops(id);
+ALTER TABLE ONLY routes
+    ADD CONSTRAINT route_stop_fkey FOREIGN KEY (stop_id) REFERENCES stops(id);
 
-ALTER TABLE ONLY teacher
-    ADD CONSTRAINT teacher_dept_fkey FOREIGN KEY (dept) REFERENCES dept(id);
+ALTER TABLE ONLY teachers
+    ADD CONSTRAINT teacher_dept_fkey FOREIGN KEY (dept_id) REFERENCES depts(id);
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 GRANT ALL ON SCHEMA public TO PUBLIC;
@@ -26115,4 +26115,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-
