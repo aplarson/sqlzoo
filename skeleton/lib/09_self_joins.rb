@@ -53,14 +53,40 @@ def connecting_routes
 end
 
 def cl_to_lr
-  # Execute the self join shown and observe that b.stop gives all the places
-  # you can get to from Craiglockhart, without changing routes. Change the
-  # query so that it shows the services from Craiglockhart to London Road.
+  # Consider the query:
+  #
+  # SELECT
+  #   a.company, a.num, a.stop, b.stop
+  # FROM
+  #   route a
+  # JOIN
+  #   route b ON (a.company = b.company AND a.num = b.num)
+  # WHERE
+  #   a.stop = 53
+  #
+  # Observe that b.stop gives all the places # you can get to from
+  # Craiglockhart, without changing routes. Change the # query so that it
+  # shows the services from Craiglockhart to London Road.
   execute(<<-SQL)
   SQL
 end
 
 def cl_to_lr_by_name
+  # Consider the query:
+  #
+  # SELECT
+  #   a.company, a.num, stopa.name, stopb.name
+  # FROM
+  #   route a
+  # JOIN
+  #   route b ON (a.company = b.company AND a.num = b.num)
+  # JOIN
+  #   stops stopa ON (a.stop = stopa.id)
+  # JOIN
+  #   stops stopb ON (b.stop = stopb.id)
+  # WHERE
+  #   stopa.name = 'Craiglockhart'
+  #
   # The query shown is similar to the previous one, however by joining two
   # copies of the stops table we can refer to stops by name rather than by
   # number. Change the query so that the services between 'Craiglockhart' and
